@@ -34,11 +34,21 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Director" />
+                    android:text="Título:"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimaryDark"/>
                 <TextView
                     android:id="@+id/movieItemTextDirector"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="46dp"
+                    android:text="Jasmany "
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimary"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,11 +57,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Genero" />
+                    android:text="Genero:"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimaryDark"/>
                 <TextView
                     android:id="@+id/movieItemTextGenre"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="46dp"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -61,7 +77,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Puntuación:" />
+                    android:text="Puntuación:"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimaryDark"/>
                 <RatingBar
                     android:id="@+id/movieItemTextRating"
                     android:layout_width="wrap_content"
