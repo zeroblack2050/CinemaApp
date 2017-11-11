@@ -1,7 +1,9 @@
-package com.cinemaapp;
+package com.cinemaapp.views.billboard;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.cinemaapp.R;
 
 public class CinemaApp extends AppCompatActivity {
 
