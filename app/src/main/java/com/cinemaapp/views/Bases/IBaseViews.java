@@ -5,4 +5,9 @@ package com.cinemaapp.views.Bases;
  */
 
 public interface IBaseViews {
+
+    public  void showProgress(int message);
+    public  void hideProgress();
+
+
 }

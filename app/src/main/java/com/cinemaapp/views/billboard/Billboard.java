@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.cinemaapp.R;
 
-public class CinemaApp extends AppCompatActivity {
+public class Billboard extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

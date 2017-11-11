@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.billboard.MovieItems"></activity>
-        <activity android:name=".views.billboard.CinemaApp"></activity>
+        <activity android:name=".views.billboard.Billboard"></activity>
     </application>
 
 </manifest>
