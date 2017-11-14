@@ -11,11 +11,22 @@ import java.util.ArrayList;
  */
 
 @Root(name = "records")
-public class MovieModel {
+public class Movie {
+
+    @Element(name="date")
+    private String date;
 
     @ElementList(entry = "movieinfo", inline = true)
     ArrayList<MovieInfo> movieInfo;
 
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public ArrayList<MovieInfo> getMovieInfo() {
         return movieInfo;

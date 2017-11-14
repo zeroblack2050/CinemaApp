@@ -1,5 +1,6 @@
 package com.cinemaapp.models.movies;
 
+import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
@@ -12,22 +13,23 @@ import java.util.ArrayList;
 @Element(name = "movieinfo")
 public class MovieInfo {
 
-    @Element(name = "id")
+
+    @Attribute(name="id")
     String id;
 
-    @ElementList(entry = "info", inline = true)
-    ArrayList<Info> infoArrayList;
+    @Element(name = "info")
+    Info info;
 
-    @ElementList(entry = "cast", inline = true)
+    @ElementList(required = false,entry = "cast", inline = true)
     ArrayList<Cast> castArrayList;
 
-    @ElementList(entry = "genre", inline = true)
+    @ElementList(required = false,entry = "genre", inline = true)
     ArrayList<Genre> genreArrayList;
 
     @ElementList(entry = "poster", inline = true)
     Poster poster;
 
-    @ElementList(entry = "preview", inline = true)
+    @Element(name = "preview")
     Preview preview;
 
 
@@ -39,12 +41,12 @@ public class MovieInfo {
         this.id = id;
     }
 
-    public ArrayList<Info> getInfoArrayList() {
-        return infoArrayList;
+    public Info getInfo() {
+        return info;
     }
 
-    public void setInfoArrayList(ArrayList<Info> infoArrayList) {
-        this.infoArrayList = infoArrayList;
+    public void setInfo(Info info) {
+        this.info = info;
     }
 
     public ArrayList<Cast> getCastArrayList() {

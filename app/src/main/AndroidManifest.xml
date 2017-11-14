@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.billboard.MovieItems"></activity>
-        <activity android:name=".views.billboard.Billboard"></activity>
+        <activity android:name=".views.billboard.MovieItems" />
+        <activity android:name=".views.billboard.Billboard" />
+        <activity android:name=".views.getDataToTextView"></activity>
     </application>
 
 </manifest>

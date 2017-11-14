@@ -24,7 +24,7 @@ public class Info {
     @Element(name ="postdate")
     private String postdate;
 
-    @Element(name ="releasedate")
+    @Element(required = false,name ="releasedate")
     private String releasedate;
 
     @Element(name ="copyright")
@@ -108,4 +108,5 @@ public class Info {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

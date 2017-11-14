@@ -1,4 +1,4 @@
-package com.cinemaapp.adapters;
+package com.cinemaapp.views.adapters;
 
 
 import android.app.Activity;
@@ -16,8 +16,8 @@ import com.cinemaapp.R;
 import com.cinemaapp.models.movies.Cast;
 import com.cinemaapp.models.movies.Genre;
 import com.cinemaapp.models.movies.Info;
+import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.models.movies.MovieInfo;
-import com.cinemaapp.models.movies.MovieModel;
 import com.cinemaapp.models.movies.Poster;
 import com.cinemaapp.models.movies.Preview;
 
@@ -27,9 +27,9 @@ import java.util.ArrayList;
  * Created by Superadmin1 on 04/11/2017.
  */
 
-public class MovieItemAdapter extends ArrayAdapter<MovieModel> {
+public class MovieItemAdapter extends ArrayAdapter<Movie> {
 
-    private ArrayList<MovieModel> movieModelArrayList;
+    private ArrayList<Movie> movieArrayList;
     private ArrayList<MovieInfo> movieInfoArrayList;
     private Activity context;
     private ImageView imageMovieItem;
@@ -41,7 +41,7 @@ public class MovieItemAdapter extends ArrayAdapter<MovieModel> {
     private Genre genre;
     private Info info;
     private MovieInfo movieInfo;
-    private MovieModel movieModel;
+    private Movie movie;
     private Poster poster;
     private Preview preview;
 
@@ -51,10 +51,10 @@ public class MovieItemAdapter extends ArrayAdapter<MovieModel> {
 
 
 
-    public MovieItemAdapter(Activity context, int resource, ArrayList<MovieModel> movieModel) {
-        super(context, resource, movieModel);
+    public MovieItemAdapter(Activity context, int resource, ArrayList<Movie> movie) {
+        super(context, resource, movie);
         this.context = context;
-        this.movieModelArrayList = movieModel;
+        this.movieArrayList = movie;
 
     }
 
@@ -62,24 +62,24 @@ public class MovieItemAdapter extends ArrayAdapter<MovieModel> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movie_items, parent, false);
-        this.movieModel = this.movieModelArrayList.get(position);
+        this.movie = this.movieArrayList.get(position);
         loadView(convertView);
         obtainedMoviesInfo(convertView);
 
-        for (int i = 0; i< movieModel.getMovieInfo().size();i++){
-            movieInfo = movieModel.getMovieInfo().get(0);
+        for (int i = 0; i< movie.getMovieInfo().size(); i++){
+            movieInfo = movie.getMovieInfo().get(0);
             info = movieInfo.getInfoArrayList().get(0);
             genre = movieInfo.getGenreArrayList().get(0);
-            //imageMovieItem.setImageBitmap(movieModel.getImage());
+            //imageMovieItem.setImageBitmap(movie.getImage());
             titleMovieItem.setText(info.getTitle());
             genreMovieItem.setText(genre.getGenre());
-            ratingMovieItem.setNumStars(5);
+            ratingMovieItem.setNumStars(3);
         }
         return convertView;
     }
 
     public void obtainedMoviesInfo(View convertView){
-        movieInfoArrayList = movieModel.getMovieInfo();
+        movieInfoArrayList = movie.getMovieInfo();
 
     }
 

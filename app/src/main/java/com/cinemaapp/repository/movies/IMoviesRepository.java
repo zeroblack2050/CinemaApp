@@ -1,7 +1,6 @@
 package com.cinemaapp.repository.movies;
 
-import com.cinemaapp.models.movies.MovieInfo;
-import com.cinemaapp.models.movies.MovieModel;
+import com.cinemaapp.models.movies.Movie;
 
 import java.util.ArrayList;
 
@@ -11,5 +10,5 @@ import java.util.ArrayList;
 
 public interface IMoviesRepository {
 
-    public ArrayList<MovieModel> getMoviesModel();
+    public ArrayList<Movie> getMoviesModel();
 }

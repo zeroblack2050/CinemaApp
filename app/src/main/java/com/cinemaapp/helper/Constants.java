@@ -6,7 +6,7 @@ package com.cinemaapp.helper;
 
 public class Constants {
 
-    public static final String URL_XML_SIRVICES = "http://trailers.apple.com/trailers/home/xml/current.xml";
+    public static final String URL_XML_SIRVICES = "http://trailers.apple.com/trailers/home/xml/";
     public static final String URL_JSON_SIRVICES = "";
 
 

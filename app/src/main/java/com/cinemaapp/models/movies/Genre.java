@@ -1,6 +1,9 @@
 package com.cinemaapp.models.movies;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+
+import java.util.ArrayList;
 
 
 /**
@@ -11,14 +14,16 @@ import org.simpleframework.xml.Element;
 @Element(name = "genre")
 public class Genre {
 
-    @Element(name ="genre")
-    String genre;
+    @ElementList(entry= "name", inline=true)
+    ArrayList<String> name;
 
-    public String getGenre() {
-        return genre;
+
+
+    public ArrayList<String> getName() {
+        return name;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setName(ArrayList<String> name) {
+        this.name = name;
     }
 }

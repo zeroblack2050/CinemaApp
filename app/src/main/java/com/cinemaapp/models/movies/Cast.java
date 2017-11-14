@@ -1,6 +1,9 @@
 package com.cinemaapp.models.movies;
 
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
+
+import java.util.ArrayList;
 
 
 /**
@@ -11,14 +14,14 @@ import org.simpleframework.xml.Element;
 @Element(name = "cast")
 public class Cast {
 
-    @Element(name ="cast")
-    String cast;
+    @ElementList(name ="name", inline = true)
+    ArrayList<String> name;
 
-    public String getCast() {
-        return cast;
+    public ArrayList<String> getName() {
+        return name;
     }
 
-    public void setCast(String cast) {
-        this.cast = cast;
+    public void setName(ArrayList<String> name) {
+        this.name = name;
     }
 }

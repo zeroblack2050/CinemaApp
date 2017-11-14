@@ -1,7 +1,6 @@
 package com.cinemaapp.services;
 
-import com.cinemaapp.models.movies.MovieInfo;
-import com.cinemaapp.models.movies.MovieModel;
+import com.cinemaapp.models.movies.Movie;
 
 import java.util.ArrayList;
 
@@ -36,5 +35,5 @@ public interface IServices {
     BreakFastMenu getBreakFastMenu();*/
 
     @GET("/current.xml")
-    ArrayList<MovieModel> getMoviesModel();
+    ArrayList<Movie> getMoviesModel();
 }

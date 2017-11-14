@@ -1,7 +1,7 @@
 package com.cinemaapp.presenters;
 
 import com.cinemaapp.R;
-import com.cinemaapp.models.movies.MovieModel;
+import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.repository.MapperError;
 import com.cinemaapp.repository.RepositoryError;
 import com.cinemaapp.repository.movies.MoviesRepository;
@@ -15,24 +15,25 @@ import retrofit.RetrofitError;
  * Created by jasmany on 10/11/2017.
  */
 
-public class MovieModelPresenter extends BasePresenter<IBillboard> {
+public class MoviePresenter extends BasePresenter<IBillboard> {
 
     private MoviesRepository moviesRepository;
 
-    public MovieModelPresenter() {
+    public MoviePresenter() {
         moviesRepository = new MoviesRepository();
 
     }
 
-    public void createThreadMoviesList() {
+    //Start: Public method to get list movie from billboard view
+    public void callThreadToGetMovies() {
         if (getValidateInternet().isConnected()) {
-            createThreadMovies();
+            createThreadToGetMovies();
         } else {
             getView().showAlertDialogInternet(1, 1);
         }
     }
 
-    private void createThreadMovies() {
+    private void createThreadToGetMovies() {
         // getView().showProgress(R.string.loading_message);
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -48,8 +49,8 @@ public class MovieModelPresenter extends BasePresenter<IBillboard> {
     private void getMoviesList() {
 
         try {
-            ArrayList<MovieModel> movieModelArrayList = moviesRepository.getMoviesModel();
-            getView().showMoviesList(movieModelArrayList);
+            ArrayList<Movie> movieArrayList = moviesRepository.getMoviesModel();
+            getView().showMoviesList(movieArrayList);
 
         } catch (RetrofitError retrofitError) {
 

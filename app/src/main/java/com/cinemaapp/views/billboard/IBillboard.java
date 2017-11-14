@@ -1,7 +1,6 @@
 package com.cinemaapp.views.billboard;
 
-import com.cinemaapp.models.movies.MovieInfo;
-import com.cinemaapp.models.movies.MovieModel;
+import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.views.Bases.IBaseViews;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 
 public interface IBillboard extends IBaseViews {
 
-    void showMoviesList(ArrayList<MovieModel> movieModelArrayList);
+    void showMoviesList(ArrayList<Movie> movieArrayList);
     void showAlertDialogInternet(int title, int message);
     void showAlertError(int title, String message);
 

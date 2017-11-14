@@ -2,8 +2,7 @@ package com.cinemaapp.repository.movies;
 
 import com.cinemaapp.helper.ServicesFactory;
 import com.cinemaapp.helper.TypeDecryption;
-import com.cinemaapp.models.movies.MovieInfo;
-import com.cinemaapp.models.movies.MovieModel;
+import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.services.IServices;
 
 import java.util.ArrayList;
@@ -24,8 +23,8 @@ public class MoviesRepository implements IMoviesRepository {
     }
 
     @Override
-    public ArrayList<MovieModel> getMoviesModel() throws RetrofitError {
-        ArrayList<MovieModel> movieModel = services.getMoviesModel();
-        return movieModel;
+    public ArrayList<Movie> getMoviesModel() throws RetrofitError {
+        ArrayList<Movie> movie = services.getMoviesModel();
+        return movie;
     }
 }
