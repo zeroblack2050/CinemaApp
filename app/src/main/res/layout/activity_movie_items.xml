@@ -9,23 +9,23 @@
     android:padding="5dp">
 
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorGray">
 
-        <ImageView
-            android:id="@+id/imageMovieItem"
-            android:layout_width="185dp"
-            android:layout_height="200dp"
-            android:padding="5dp"/>
+
+
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="0.05"
             android:orientation="vertical"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp">
+            android:paddingLeft="3dp"
+            android:paddingRight="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,8 +34,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Título:"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:text="Título"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:fontFamily="serif"
@@ -45,10 +45,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="38dp"
                     android:text="Jasmany "
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textStyle="bold"
                     android:fontFamily="serif"
-                    android:textColor="@color/colorPrimary"/>
+                    android:textColor="@color/colorPrimaryDark"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -57,8 +57,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Genero:"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:text="Genero"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:fontFamily="serif"
@@ -67,7 +67,7 @@
                     android:id="@+id/genreMovieItem"
                     android:layout_width="match_parent"
                     android:layout_height="38dp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textStyle="bold"
                     android:fontFamily="serif"
                     android:textColor="@color/colorPrimary"/>
@@ -80,23 +80,54 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Puntuación:"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:text="Estudio"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:fontFamily="serif"
                     android:textColor="@color/colorPrimaryDark"/>
-                <RatingBar
+                <TextView
                     android:id="@+id/ratingMovieItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimary"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:numStars="5"
-                    style="@style/Widget.AppCompat.RatingBar.Indicator"
-                    />
+                    android:text="Categoria"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimaryDark"/>
+                <TextView
+                    android:id="@+id/ratingMovieItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:fontFamily="serif"
+                    android:textColor="@color/colorPrimary"/>
             </LinearLayout>
 
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageMovieItem"
+            android:layout_width="180dp"
+            android:layout_height="225dp"
+            android:layout_weight="0"
+            android:padding="3dp"/>
 
 
     </LinearLayout>

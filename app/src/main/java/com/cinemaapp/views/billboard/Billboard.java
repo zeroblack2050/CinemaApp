@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 
 import com.cinemaapp.R;
 import com.cinemaapp.models.movies.Movie;
+import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.MoviePresenter;
 import com.cinemaapp.views.Bases.BaseViews;
 import com.cinemaapp.views.adapters.MovieItemAdapter;
@@ -20,7 +21,6 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
     private ListView listViewListBillboard;
     private ProgressBar progressBarBillboard;
-    private SwipeRefreshLayout swipeRefreshLayoutBillboard;
     private MovieItemAdapter movieItemAdapter;
 
     @Override
@@ -32,6 +32,7 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
         loadComponents();
         instanceObjects();
         loadEvents();
+
 
     }
 
@@ -50,12 +51,12 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
     public void loadComponents() {
         listViewListBillboard = (ListView) findViewById(R.id.billboardAppListViewMovieItem);
-        progressBarBillboard = (ProgressBar) findViewById(R.id.billboardAppProgressBar);
+        //progressBarBillboard = (ProgressBar) findViewById(R.id.billboardAppProgressBar);
     }
 
 
 
-    public void callMovieAdapter(final ArrayList<Movie> movieArrayList) {
+    public void callMovieAdapter(final ArrayList<MovieInfo> movieArrayList) {
         movieItemAdapter = new MovieItemAdapter(this, R.id.billboardAppListViewMovieItem, movieArrayList);
         listViewListBillboard.setAdapter(movieItemAdapter);
         listViewListBillboard.setOnItemClickListener(new AdapterView.OnItemClickListener() {

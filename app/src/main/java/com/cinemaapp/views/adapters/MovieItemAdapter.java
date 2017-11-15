@@ -27,34 +27,26 @@ import java.util.ArrayList;
  * Created by Superadmin1 on 04/11/2017.
  */
 
-public class MovieItemAdapter extends ArrayAdapter<Movie> {
+public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
 
-    private ArrayList<Movie> movieArrayList;
-    private ArrayList<MovieInfo> movieInfoArrayList;
+
     private Activity context;
+
     private ImageView imageMovieItem;
     private TextView titleMovieItem;
     private TextView genreMovieItem;
-    private RatingBar ratingMovieItem;
-
-    private Cast cast;
+    private TextView ratingMovieItem;
+    //
+    private ArrayList<Genre> genreArrayList;
     private Genre genre;
     private Info info;
+    private ArrayList<MovieInfo> movieInfoArrayList;
     private MovieInfo movieInfo;
-    private Movie movie;
-    private Poster poster;
-    private Preview preview;
 
-
-
-
-
-
-
-    public MovieItemAdapter(Activity context, int resource, ArrayList<Movie> movie) {
-        super(context, resource, movie);
+    public MovieItemAdapter(Activity context, int resource, ArrayList<MovieInfo> movieInfo) {
+        super(context, resource, movieInfo);
         this.context = context;
-        this.movieArrayList = movie;
+        this.movieInfoArrayList = movieInfo;
 
     }
 
@@ -62,32 +54,26 @@ public class MovieItemAdapter extends ArrayAdapter<Movie> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movie_items, parent, false);
-        this.movie = this.movieArrayList.get(position);
+        this.movieInfo = this.movieInfoArrayList.get(position);
+        this.info = this.movieInfo.getInfo();
+        this.genreArrayList = this.movieInfo.getGenreArrayList();
+        this.genre = this.genreArrayList.get(0);
         loadView(convertView);
-        obtainedMoviesInfo(convertView);
 
-        for (int i = 0; i< movie.getMovieInfo().size(); i++){
-            movieInfo = movie.getMovieInfo().get(0);
-            info = movieInfo.getInfo();
-            genre = movieInfo.getGenreArrayList().get(0);
-            //imageMovieItem.setImageBitmap(movie.getImage());
-            titleMovieItem.setText(info.getTitle());
-            genreMovieItem.setText(genre.getName().toString());
-            ratingMovieItem.setNumStars(3);
-        }
+        titleMovieItem.setText(info.getTitle());
+        genreMovieItem.setText(genre.getName().get(0));
+        ratingMovieItem.setText(info.getRating());
+
+
         return convertView;
     }
 
-    public void obtainedMoviesInfo(View convertView){
-        movieInfoArrayList = movie.getMovieInfo();
-
-    }
 
     private void loadView(View convertView){
         imageMovieItem = (ImageView) convertView.findViewById(R.id.imageMovieItem);
         titleMovieItem = (TextView) convertView.findViewById(R.id.titleMovieItem);
         genreMovieItem = (TextView) convertView.findViewById(R.id.genreMovieItem);
-        ratingMovieItem = (RatingBar) convertView.findViewById(R.id.genreMovieItem);
+        ratingMovieItem = (TextView) convertView.findViewById(R.id.genreMovieItem);
 
     }
 
