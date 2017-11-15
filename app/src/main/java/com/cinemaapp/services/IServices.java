@@ -35,5 +35,5 @@ public interface IServices {
     BreakFastMenu getBreakFastMenu();*/
 
     @GET("/current.xml")
-    ArrayList<Movie> getMoviesModel();
+    Movie getMoviesModel();
 }

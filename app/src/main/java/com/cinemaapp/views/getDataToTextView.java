@@ -21,55 +21,59 @@ public class getDataToTextView extends AppCompatActivity {
 
     TextView textView;
     MoviesRepository moviesRepository;
+    Movie movieArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_data_to_text_view);
-        textView = (TextView) findViewById(R.id.checkMovieModel);
+        textView = findViewById(R.id.checkMovieModel);
         moviesRepository = new MoviesRepository();
-        loadEvents();
+        callRepository();
+
+
     }
 
-    private void loadEvents() {
-        ArrayList<Movie> movieArray = moviesRepository.getMoviesModel();
-        for (int i = 0; i < 2;i++) {
-            Movie movie = movieArray.get(i);
-            ArrayList<MovieInfo> movieInfoArray = movie.getMovieInfo();
+    public void callRepository(){
 
-            for (int j =0 ; j<2;j++){
-                MovieInfo movieInfo = movieInfoArray.get(j);
-                Info info = movieInfo.getInfoArrayList().get(0);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Movie movieArray = moviesRepository.getMoviesModel();
+                getmovie(movieArray);
+                Movie movie = movieArray;
+                ArrayList<MovieInfo> movieInfoArray = movie.getMovieInfo();
+                MovieInfo movieInfo = movieInfoArray.get(0);
+                Info info = movieInfo.getInfo();
                 Cast cast = movieInfo.getCastArrayList().get(0);
                 Genre genre = movieInfo.getGenreArrayList().get(0);
                 Poster poster = movieInfo.getPoster();
                 Preview preview = movieInfo.getPreview();
-                StringBuffer a = new StringBuffer("");
-                a.append("Title: "+info.getTitle()+"\n");
-                //a.append("Runtime: "+info.getRuntime()+"\n");
-                //a.append("Rating: "+info.getRating()+"\n");
-                //a.append("Studio: "+info.getStudio()+"\n");
-                //a.append("Postdate: "+info.getPostdate()+"\n");
-                //a.append("Release date: "+info.getReleasedate()+"\n");
-                //a.append("Copyright: "+info.getCopyright()+"\n");
-                //a.append("Director: "+info.getDirector()+"\n");
-                //a.append("Description: "+info.getDescription()+"\n");
-
-                //a.append("Cast: "+cast.getCast()+"\n");
-                //a.append("Genre: "+genre.getGenre()+"\n");
-                //a.append("Poster l: "+poster.getLocation()+"\n");
-                //a.append("Poster x: "+poster.getXlarge()+"\n");
-                //a.append("Preview: "+preview.getLarge()+"\n");
-
-                textView.setText(a);
+                StringBuffer a = new StringBuffer();
+                a.append("Title: "+info.getTitle().toString()+"\n");
+                Log.i("Title: ",info.getTitle().toString());
 
             }
-
-
-
-
-            //Log.i("BreakFastMenu",a.toString());
-
-        }
+        });
+        thread.start();
     }
+
+    public void getmovie(Movie movie){
+        movieArray = movie;
+        if (movie != null) {
+            loadEvents();
+        }
+
+    }
+
+    private void loadEvents() {
+
+
+        //textView.setText("Prueba"+a);
+        //Log.i("Title: ",info.getTitle().toString());
+
+
+    }
+
+
 }

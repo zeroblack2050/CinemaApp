@@ -14,7 +14,7 @@ import java.util.ArrayList;
 @Element(name = "cast")
 public class Cast {
 
-    @ElementList(name ="name", inline = true)
+    @ElementList(entry ="name", inline = true)
     ArrayList<String> name;
 
     public ArrayList<String> getName() {

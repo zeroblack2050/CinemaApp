@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public interface IBillboard extends IBaseViews {
 
-    void showMoviesList(ArrayList<Movie> movieArrayList);
+    void showMoviesList(Movie movie);
     void showAlertDialogInternet(int title, int message);
     void showAlertError(int title, String message);
 

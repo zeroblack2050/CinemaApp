@@ -49,8 +49,8 @@ public class MoviePresenter extends BasePresenter<IBillboard> {
     private void getMoviesList() {
 
         try {
-            ArrayList<Movie> movieArrayList = moviesRepository.getMoviesModel();
-            getView().showMoviesList(movieArrayList);
+            Movie movie = moviesRepository.getMoviesModel();
+            getView().showMoviesList(movie);
 
         } catch (RetrofitError retrofitError) {
 

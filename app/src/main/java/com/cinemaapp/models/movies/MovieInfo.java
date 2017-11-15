@@ -26,7 +26,7 @@ public class MovieInfo {
     @ElementList(required = false,entry = "genre", inline = true)
     ArrayList<Genre> genreArrayList;
 
-    @ElementList(entry = "poster", inline = true)
+    @Element(name = "poster")
     Poster poster;
 
     @Element(name = "preview")

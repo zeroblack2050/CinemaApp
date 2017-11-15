@@ -23,8 +23,8 @@ public class MoviesRepository implements IMoviesRepository {
     }
 
     @Override
-    public ArrayList<Movie> getMoviesModel() throws RetrofitError {
-        ArrayList<Movie> movie = services.getMoviesModel();
+    public Movie getMoviesModel() throws RetrofitError {
+        Movie movie = services.getMoviesModel();
         return movie;
     }
 }

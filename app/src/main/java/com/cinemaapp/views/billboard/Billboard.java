@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.cinemaapp.R;
 import com.cinemaapp.models.movies.Movie;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
     private ListView listViewListBillboard;
-    private ContentLoadingProgressBar progressBarBillboard;
+    private ProgressBar progressBarBillboard;
     private SwipeRefreshLayout swipeRefreshLayoutBillboard;
     private MovieItemAdapter movieItemAdapter;
 
@@ -31,7 +32,7 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
         loadComponents();
         instanceObjects();
         loadEvents();
-        progressBarBillboard.hide();
+
     }
 
 
@@ -49,12 +50,12 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
     public void loadComponents() {
         listViewListBillboard = (ListView) findViewById(R.id.billboardAppListViewMovieItem);
-        progressBarBillboard = (ContentLoadingProgressBar) findViewById(R.id.billboardAppProgressBar);
+        progressBarBillboard = (ProgressBar) findViewById(R.id.billboardAppProgressBar);
     }
 
 
 
-    /*public void callMovieAdapter(final ArrayList<Movie> movieArrayList) {
+    public void callMovieAdapter(final ArrayList<Movie> movieArrayList) {
         movieItemAdapter = new MovieItemAdapter(this, R.id.billboardAppListViewMovieItem, movieArrayList);
         listViewListBillboard.setAdapter(movieItemAdapter);
         listViewListBillboard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,7 +64,7 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
             }
         });
-    }*/
+    }
 
 
     //End: Own methods
@@ -90,7 +91,7 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
     //Start: Methods heritage
 
     @Override
-    public void showMoviesList(ArrayList<Movie> movieArrayList) {
+    public void showMoviesList(Movie movie) {
 
     }
 

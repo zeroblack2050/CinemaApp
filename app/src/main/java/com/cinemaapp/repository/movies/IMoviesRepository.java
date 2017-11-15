@@ -10,5 +10,5 @@ import java.util.ArrayList;
 
 public interface IMoviesRepository {
 
-    public ArrayList<Movie> getMoviesModel();
+    public Movie getMoviesModel();
 }

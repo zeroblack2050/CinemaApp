@@ -68,11 +68,11 @@ public class MovieItemAdapter extends ArrayAdapter<Movie> {
 
         for (int i = 0; i< movie.getMovieInfo().size(); i++){
             movieInfo = movie.getMovieInfo().get(0);
-            info = movieInfo.getInfoArrayList().get(0);
+            info = movieInfo.getInfo();
             genre = movieInfo.getGenreArrayList().get(0);
             //imageMovieItem.setImageBitmap(movie.getImage());
             titleMovieItem.setText(info.getTitle());
-            genreMovieItem.setText(genre.getGenre());
+            genreMovieItem.setText(genre.getName().toString());
             ratingMovieItem.setNumStars(3);
         }
         return convertView;

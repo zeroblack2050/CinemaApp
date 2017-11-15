@@ -10,28 +10,14 @@ import org.simpleframework.xml.Element;
 @Element(name = "preview")
 public class Preview {
 
+    @Element(name = "large")
+    PreviewLarge previewLarge;
 
-
-    @Attribute(name="filesize")
-    private String filesice;
-
-
-    @Element(name ="large")
-    String large;
-
-    public String getFilesice() {
-        return filesice;
+    public PreviewLarge getPreviewLarge() {
+        return previewLarge;
     }
 
-    public void setFilesice(String filesice) {
-        this.filesice = filesice;
-    }
-
-    public String getLarge() {
-        return large;
-    }
-
-    public void setLarge(String large) {
-        this.large = large;
+    public void setPreviewLarge(PreviewLarge previewLarge) {
+        this.previewLarge = previewLarge;
     }
 }
