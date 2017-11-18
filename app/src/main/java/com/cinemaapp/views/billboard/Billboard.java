@@ -1,5 +1,6 @@
 package com.cinemaapp.views.billboard;
 
+import android.content.Intent;
 import android.support.v4.widget.ContentLoadingProgressBar;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -7,8 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.cinemaapp.R;
+import com.cinemaapp.helper.Constants;
 import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.MoviePresenter;
@@ -36,9 +39,11 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
     }
 
-
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getPresenter().callThreadToGetMovies();
+    }
 
     //Start: Own methods
     private void loadEvents() {
@@ -56,12 +61,16 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
 
 
 
-    public void callMovieAdapter(final ArrayList<MovieInfo> movieArrayList) {
-        movieItemAdapter = new MovieItemAdapter(this, R.id.billboardAppListViewMovieItem, movieArrayList);
+    public void callMovieAdapter(final ArrayList<MovieInfo> movieInfoArrayList) {
+        movieItemAdapter = new MovieItemAdapter(this, R.id.billboardAppListViewMovieItem, movieInfoArrayList);
         listViewListBillboard.setAdapter(movieItemAdapter);
         listViewListBillboard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long ld) {
+                /*Intent intent = new Intent(Billboard.this, BillboardDetail.class);
+                intent.putExtra(Constants.ARRAY_MOVIES,movieInfoArrayList.get(position));
+                startActivity(intent);*/
+                Toast.makeText(Billboard.this, "En construción", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -92,8 +101,14 @@ public class Billboard extends BaseViews<MoviePresenter> implements IBillboard {
     //Start: Methods heritage
 
     @Override
-    public void showMoviesList(Movie movie) {
-
+    public void showMoviesList(final ArrayList<MovieInfo> movieInfoArrayList) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //progress.hide();
+                callMovieAdapter(movieInfoArrayList);
+            }
+        });
     }
 
     @Override

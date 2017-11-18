@@ -16,12 +16,14 @@ public class Constants {
     public static final String DEFAULT_ERROR = "Ha ocurrido un error, intentalo nuevamente.";
     public static final int UNAUTHORIZED_ERROR_CODE = 401;
     public static final int NOT_FOUND_ERROR_CODE = 404;
+    public static final String ARRAY_MOVIES = "ArrayMovie";
+
 
     public static final String EMPTY = "";
     public static final String PREFERENCES = "preferences";
     public static final String USER = "user";
     public static final String TITLE_PROFILE = "Perfil";
 
-    
+
 
 }

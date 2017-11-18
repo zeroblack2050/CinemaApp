@@ -1,9 +1,13 @@
 package com.cinemaapp.models.movies;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -11,24 +15,29 @@ import java.util.ArrayList;
  */
 
 @Element(name = "movieinfo")
-public class MovieInfo {
+public class MovieInfo implements Serializable{
 
-
+    @SerializedName("id")
     @Attribute(name="id")
     String id;
 
+    @SerializedName("info")
     @Element(name = "info")
     Info info;
 
+    @SerializedName("cast")
     @ElementList(required = false,entry = "cast", inline = true)
     ArrayList<Cast> castArrayList;
 
+    @SerializedName("genre")
     @ElementList(required = false,entry = "genre", inline = true)
     ArrayList<Genre> genreArrayList;
 
+    @SerializedName("poster")
     @Element(name = "poster")
     Poster poster;
 
+    @SerializedName("preview")
     @Element(name = "preview")
     Preview preview;
 

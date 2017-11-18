@@ -1,10 +1,12 @@
 package com.cinemaapp.models.movies;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -13,13 +15,15 @@ import java.util.ArrayList;
 
 // @Root(name = "records", strict = false) To map not all content on xml
 @Root(name = "records")
-public class Movie {
+public class Movie implements Serializable{
 
+    @SerializedName("date")
     @Attribute(name="date")
     private String date;
 
+    @SerializedName("movieinfo")
     @ElementList(required = false,entry = "movieinfo", inline = true)
-    ArrayList<MovieInfo> movieInfo;
+    ArrayList<MovieInfo> movieInfoArrayList;
 
 
     public String getDate() {
@@ -30,11 +34,11 @@ public class Movie {
         this.date = date;
     }
 
-    public ArrayList<MovieInfo> getMovieInfo() {
-        return movieInfo;
+    public ArrayList<MovieInfo> getMovieInfoArrayList() {
+        return movieInfoArrayList;
     }
 
-    public void setMovieInfo(ArrayList<MovieInfo> movieInfo) {
-        this.movieInfo = movieInfo;
+    public void setMovieInfoArrayList(ArrayList<MovieInfo> movieInfo) {
+        this.movieInfoArrayList = movieInfo;
     }
 }

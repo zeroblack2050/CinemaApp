@@ -14,7 +14,7 @@ public class BasePresenter<T extends IBaseViews> {
 
     public void inject(T view, IValidateInternet iValidateInternet) {
         this.view = view;
-        this.validateInternet = this.validateInternet;
+        this.validateInternet = iValidateInternet;
     }
 
     public T getView() {

@@ -1,7 +1,10 @@
 package com.cinemaapp.presenters;
 
+import android.util.Log;
+
 import com.cinemaapp.R;
 import com.cinemaapp.models.movies.Movie;
+import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.repository.MapperError;
 import com.cinemaapp.repository.RepositoryError;
 import com.cinemaapp.repository.movies.MoviesRepository;
@@ -28,9 +31,11 @@ public class MoviePresenter extends BasePresenter<IBillboard> {
     public void callThreadToGetMovies() {
         if (getValidateInternet().isConnected()) {
             createThreadToGetMovies();
+            Log.i("Pass from here: ","callThreadToGetMovies");
         } else {
             getView().showAlertDialogInternet(1, 1);
         }
+        createThreadToGetMovies();
     }
 
     private void createThreadToGetMovies() {
@@ -50,7 +55,8 @@ public class MoviePresenter extends BasePresenter<IBillboard> {
 
         try {
             Movie movie = moviesRepository.getMoviesModel();
-            getView().showMoviesList(movie);
+            ArrayList<MovieInfo> movieInfoArrayList = movie.getMovieInfoArrayList();
+            getView().showMoviesList(movieInfoArrayList);
 
         } catch (RetrofitError retrofitError) {
 

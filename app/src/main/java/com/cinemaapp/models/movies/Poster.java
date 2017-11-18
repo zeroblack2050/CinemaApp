@@ -1,6 +1,10 @@
 package com.cinemaapp.models.movies;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.simpleframework.xml.Element;
+
+import java.io.Serializable;
 
 
 /**
@@ -9,11 +13,13 @@ import org.simpleframework.xml.Element;
 
 
 @Element(name = "poster")
-public class Poster {
+public class Poster implements Serializable{
 
+    @SerializedName("location")
     @Element(name ="location")
     String location;
 
+    @SerializedName("xlarge")
     @Element(name ="xlarge")
     String xlarge;
 

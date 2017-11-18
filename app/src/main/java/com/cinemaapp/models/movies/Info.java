@@ -1,38 +1,51 @@
 package com.cinemaapp.models.movies;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.simpleframework.xml.Element;
+
+import java.io.Serializable;
 
 /**
  * Created by Superadmin1 on 11/11/2017.
  */
 
 @Element(name = "info")
-public class Info {
+public class Info implements Serializable{
 
+    @SerializedName("title")
     @Element(name ="title")
     private String title;
 
+    @SerializedName("runtime")
     @Element(name ="runtime")
     private String runtime;
 
+    @SerializedName("rating")
     @Element(name ="rating")
     private String rating;
 
+    @SerializedName("studio")
     @Element(name ="studio")
     private String studio;
 
+    @SerializedName("postdate")
     @Element(name ="postdate")
     private String postdate;
 
+    @SerializedName("releasedate")
     @Element(required = false,name ="releasedate")
     private String releasedate;
 
+    @SerializedName("copyright")
     @Element(name ="copyright")
     private String copyright;
 
+    @SerializedName("director")
     @Element(name ="director")
     private String director;
 
+    @SerializedName("description")
     @Element(name ="description")
     private String description;
 
