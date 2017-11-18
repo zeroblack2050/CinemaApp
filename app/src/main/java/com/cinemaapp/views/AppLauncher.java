@@ -21,7 +21,7 @@ public class AppLauncher extends AppCompatActivity {
 
     public void initApp(){
         //Intent intent = new Intent(this, Billboard.class);
-        Intent intent = new Intent(this, Billboard.class);
+        Intent intent = new Intent(this, CinemaSplash.class);
         startActivity(intent);
     }
 }

@@ -42,6 +42,7 @@ dependencies {
     compile 'com.github.florent37:diagonallayout:1.0.7'
     compile 'com.android.support:cardview-v7:26.1.+'
     compile 'com.android.support:appcompat-v7:26.1.+'
+    compile 'com.airbnb.android:lottie:2.3.0'
 
 
 
