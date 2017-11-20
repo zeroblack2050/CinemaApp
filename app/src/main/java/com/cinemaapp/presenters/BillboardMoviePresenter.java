@@ -18,11 +18,11 @@ import retrofit.RetrofitError;
  * Created by jasmany on 10/11/2017.
  */
 
-public class MoviePresenter extends BasePresenter<IBillboard> {
+public class BillboardMoviePresenter extends BasePresenter<IBillboard> {
 
     private MoviesRepository moviesRepository;
 
-    public MoviePresenter() {
+    public BillboardMoviePresenter() {
         moviesRepository = new MoviesRepository();
 
     }
@@ -47,6 +47,7 @@ public class MoviePresenter extends BasePresenter<IBillboard> {
             }
         });
         thread.start();
+
     }
 
 
@@ -57,7 +58,6 @@ public class MoviePresenter extends BasePresenter<IBillboard> {
             Movie movie = moviesRepository.getMoviesModel();
             ArrayList<MovieInfo> movieInfoArrayList = movie.getMovieInfoArrayList();
             getView().showMoviesList(movieInfoArrayList);
-
         } catch (RetrofitError retrofitError) {
 
             RepositoryError repositoryError = MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
