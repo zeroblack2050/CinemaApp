@@ -16,7 +16,7 @@ public class CinemaSplash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cinema_splash);
+        setContentView(R.layout.cinema_splash);
 
 
         loadComponents();

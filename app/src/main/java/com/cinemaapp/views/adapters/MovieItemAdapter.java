@@ -2,15 +2,8 @@ package com.cinemaapp.views.adapters;
 
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +16,7 @@ import com.cinemaapp.models.movies.Genre;
 import com.cinemaapp.models.movies.Info;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -63,7 +52,7 @@ public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_movie_items, parent, false);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_items, parent, false);
         loadView(convertView);
         this.movieInfo = this.movieInfoArrayList.get(position);
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.cinemaapp.R;
@@ -14,7 +15,6 @@ import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.BillboardMoviePresenter;
 import com.cinemaapp.views.Bases.BaseViews;
 import com.cinemaapp.views.adapters.MovieItemAdapter;
-import com.cinemaapp.views.billboard.detail.BillboardDetail;
 
 import java.util.ArrayList;
 
@@ -71,11 +71,11 @@ public class Billboard extends BaseViews<BillboardMoviePresenter> implements IBi
         listViewListBillboard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long ld) {
-                Intent intent = new Intent(Billboard.this, BillboardDetail.class);
-                intent.putExtra(Constants.POSITION_MOVIES,position);
-                intent.putExtra(Constants.ARRAY_MOVIES,movieInfoArrayList);
-                startActivity(intent);
-                //Toast.makeText(Billboard.this, "En construción", Toast.LENGTH_LONG).show();
+                //Intent intent = new Intent(Billboard.this, BillboardDetail.class);
+                //intent.putExtra(Constants.POSITION_MOVIES,position);
+                //intent.putExtra(Constants.ARRAY_MOVIES,movieInfoArrayList);
+                //startActivity(intent);
+                Toast.makeText(Billboard.this, "En construción", Toast.LENGTH_LONG).show();
 
             }
         });

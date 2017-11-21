@@ -1,31 +1,18 @@
 package com.cinemaapp.views.billboard.detail;
 
+/**
+ * Created by jasmany on 20/11/2017.
+ */
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.util.Log;
-
-import com.cinemaapp.models.movies.MovieInfo;
-
-import java.util.ArrayList;
-
-/**
- * Created by jasmany on 19/11/2017.
- */
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
-    private ArrayList<MovieInfo> movieInfoArrayList;
-    private int positionmov;
-
-    public void receiveMovieInfo(ArrayList<MovieInfo> movieInfoArrayList, int position){
-        this.movieInfoArrayList = movieInfoArrayList;
-        this.positionmov = position;
-    }
 
     public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -35,16 +22,25 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + positionmov);
+        return PlaceholderFragment.newInstance(position );
     }
 
     @Override
     public int getCount() {
         // Show 3 total pages.
-        //Log.i("Tamaño ",""+positionmov);
-        return movieInfoArrayList.size();
+        return 3;
     }
 
-
-
+    @Override
+    public CharSequence getPageTitle(int position) {
+        /*switch (position) {
+            case 1:
+                return "Section 1";
+            case 2:
+                return "Section 2";
+            case 3:
+                return "Section 3";
+        }*/
+        return super.getPageTitle(position);
+    }
 }
