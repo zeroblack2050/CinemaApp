@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/menu_init_session"
         android:orderInCategory="100"
-        android:title="Cerrar"
+        android:title="Iniciar sesión"
+        />
+
+    <item
+        android:id="@+id/menu_close_session"
+        android:orderInCategory="100"
+        android:title="Cerrar sesión"
         />
 </menu>

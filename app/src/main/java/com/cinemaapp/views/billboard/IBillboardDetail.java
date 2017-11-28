@@ -1,4 +1,4 @@
-package com.cinemaapp.views.billboard.detail;
+package com.cinemaapp.views.billboard;
 
 import com.cinemaapp.views.Bases.IBaseViews;
 

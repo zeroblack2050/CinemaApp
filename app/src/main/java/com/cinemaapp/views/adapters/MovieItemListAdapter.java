@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.cinemaapp.R;
 import com.cinemaapp.models.movies.Genre;
-import com.cinemaapp.models.movies.Info;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.squareup.picasso.Picasso;
 
@@ -23,7 +22,7 @@ import java.util.ArrayList;
  * Created by Superadmin1 on 04/11/2017.
  */
 
-public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
+public class MovieItemListAdapter extends ArrayAdapter<MovieInfo> {
 
 
     private Activity context;
@@ -33,16 +32,11 @@ public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
     private TextView genreMovieItem;
     private TextView studioMovieItem;
     private TextView ratingMovieItem;
-    //
     private ArrayList<MovieInfo> movieInfoArrayList;
     private MovieInfo movieInfo;
 
-    private ArrayList<Genre> genreArrayList;
-    private Genre genre;
-    private Info info;
 
-
-    public MovieItemAdapter(Activity context, int resource, ArrayList<MovieInfo> movieInfoArrayList) {
+    public MovieItemListAdapter(Activity context, int resource, ArrayList<MovieInfo> movieInfoArrayList) {
         super(context, resource, movieInfoArrayList);
         this.context = context;
         this.movieInfoArrayList = movieInfoArrayList;
@@ -52,7 +46,7 @@ public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_items, parent, false);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.movie_items_listview, parent, false);
         loadView(convertView);
         this.movieInfo = this.movieInfoArrayList.get(position);
 
@@ -88,7 +82,6 @@ public class MovieItemAdapter extends ArrayAdapter<MovieInfo> {
 
 
         }
-        //endString.append(".");
         return endString;
     }
 

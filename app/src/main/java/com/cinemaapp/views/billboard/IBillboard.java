@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public interface IBillboard extends IBaseViews {
 
     void showMoviesList(ArrayList<MovieInfo> movieInfoArrayList);
+    void showMoviesGrid(ArrayList<MovieInfo> movieInfoArrayList);
     void showAlertDialogInternet(int title, int message);
     void showAlertError(int title, String message);
 

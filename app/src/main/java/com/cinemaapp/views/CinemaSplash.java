@@ -7,12 +7,12 @@ import android.os.Bundle;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.cinemaapp.R;
-import com.cinemaapp.views.billboard.Billboard;
+import com.cinemaapp.views.billboard.BillboardList;
 
 public class CinemaSplash extends AppCompatActivity {
 
-    LottieAnimationView animationView;
-    int flo;
+    private LottieAnimationView animationView;
+    private int TIMEOUT_ANIMATION = 10000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,22 +24,30 @@ public class CinemaSplash extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadSplash();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadSplash();
+    }
 
     private void loadComponents() {
         animationView = (LottieAnimationView) findViewById(R.id.animation_view);
     }
 
     private void loadSplash() {
-        flo = 10000;
         animationView.setAnimation("progress_bar.json");
-        animationView.loop(false);
         animationView.playAnimation();
-        animationView.setTop(flo);
         animationView.addAnimatorListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animator) {
-
+                animationView.loop(false);
+                animationView.setTop(TIMEOUT_ANIMATION);
             }
 
             @Override
@@ -54,14 +62,14 @@ public class CinemaSplash extends AppCompatActivity {
 
             @Override
             public void onAnimationRepeat(Animator animator) {
-
+                animationView.playAnimation();
             }
         });
 
     }
 
     public void loadBillboard(){
-        Intent intent = new Intent(this, Billboard.class);
+        Intent intent = new Intent(this, BillboardList.class);
         startActivity(intent);
     }
 

@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.cinemaapp.views.billboard.Billboard;
-import com.cinemaapp.views.billboard.detail.BillboardDetail;
+import com.cinemaapp.views.billboard.BillboardList;
 
 /**
  * Created by jasmany on 10/11/2017.
@@ -20,8 +19,8 @@ public class AppLauncher extends AppCompatActivity {
     }
 
     public void initApp(){
-        //Intent intent = new Intent(this, Billboard.class);
-        Intent intent = new Intent(this, BillboardDetail.class);
+        //Intent intent = new Intent(this, BillboardList.class);
+        Intent intent = new Intent(this, BillboardList.class);
         startActivity(intent);
     }
 }

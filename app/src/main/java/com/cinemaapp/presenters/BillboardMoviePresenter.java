@@ -31,7 +31,7 @@ public class BillboardMoviePresenter extends BasePresenter<IBillboard> {
     public void callThreadToGetMovies() {
         if (getValidateInternet().isConnected()) {
             createThreadToGetMovies();
-            Log.i("Pass from here: ","callThreadToGetMovies");
+            //Log.i("Pass from here: ","callThreadToGetMovies");
         } else {
             getView().showAlertDialogInternet(1, 1);
         }
