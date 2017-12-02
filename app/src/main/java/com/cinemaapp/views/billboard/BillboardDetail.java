@@ -3,7 +3,6 @@ package com.cinemaapp.views.billboard;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -11,6 +10,7 @@ import android.widget.VideoView;
 
 import com.cinemaapp.R;
 import com.cinemaapp.helper.Constants;
+import com.cinemaapp.helper.customclasses.CustomButton;
 import com.cinemaapp.models.movies.Cast;
 import com.cinemaapp.models.movies.Genre;
 import com.cinemaapp.models.movies.MovieInfo;
@@ -28,7 +28,7 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
     private ImageView imageView;
     private TextView title, genre, rating, studio, director, cast, description;
     private VideoView videoView;
-    private Button button;
+    private CustomButton buttonLaunchMap, buttonBackToBillboard;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,11 +46,17 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
     }
 
     private void loadActions() {
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonLaunchMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BillboardDetail.this, MapsActivity.class);
                 startActivity(intent);
+            }
+        });
+        buttonBackToBillboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
@@ -100,7 +106,9 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
 
         description = findViewById(R.id.detailTextView);
         videoView = findViewById(R.id.detailVideoView);
-        button = findViewById(R.id.detailButton);
+        buttonLaunchMap = findViewById(R.id.detailButtonToMap);
+        buttonBackToBillboard = findViewById(R.id.detailBackButton);
+
 
     }
 

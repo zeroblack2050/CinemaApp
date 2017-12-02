@@ -4,12 +4,10 @@
     <item
         android:id="@+id/menu_init_session"
         android:orderInCategory="100"
-        android:title="Iniciar sesión"
+        android:icon="@drawable/twitter_icon"
+        android:iconTint="@drawable/twitter_icon"
+        android:iconTintMode="@drawable/twitter_icon"
+        android:title="Twitter"
         />
 
-    <item
-        android:id="@+id/menu_close_session"
-        android:orderInCategory="100"
-        android:title="Cerrar sesión"
-        />
 </menu>

@@ -171,10 +171,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="42dp"
                             android:paddingBottom="5dp">
+
                             <com.cinemaapp.helper.customclasses.CustomTextView
                                 android:id="@+id/detailCast"
                                 android:layout_width="match_parent"
                                 android:layout_height="42dp"/>
+
                         </ScrollView>
 
                     </LinearLayout>
@@ -218,11 +220,18 @@
                     android:text="Sinopsis"
                     android:textSize="7dp"/>
 
-                <com.cinemaapp.helper.customclasses.CustomTextView
-                    android:id="@+id/detailTextView"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
+                    android:layout_height="wrap_content">
+
+                    <com.cinemaapp.helper.customclasses.CustomTextView
+                        android:id="@+id/detailTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </ScrollView>
+
 
             </LinearLayout>
 
@@ -243,13 +252,32 @@
 
     </LinearLayout>
 
-    <com.cinemaapp.helper.customclasses.CustomButton
-        android:id="@+id/detailButton"
-        android:layout_width="200dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver salas de cine"
-        android:layout_gravity="end"
-        />
+        android:orientation="horizontal"
+        android:background="">
 
+        <com.cinemaapp.helper.customclasses.CustomButton
+            android:id="@+id/detailBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Volver"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"/>
+
+        <com.cinemaapp.helper.customclasses.CustomButton
+            android:id="@+id/detailButtonToMap"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Ver salas de cine"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentStart="true"
+            />
+
+    </RelativeLayout>
 
 </LinearLayout>

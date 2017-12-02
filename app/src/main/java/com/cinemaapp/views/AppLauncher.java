@@ -20,7 +20,7 @@ public class AppLauncher extends AppCompatActivity {
 
     public void initApp(){
         //Intent intent = new Intent(this, BillboardList.class);
-        Intent intent = new Intent(this, BillboardList.class);
+        Intent intent = new Intent(this, CinemaSplash.class);
         startActivity(intent);
     }
 }

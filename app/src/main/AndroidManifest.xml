@@ -39,7 +39,7 @@
         <activity
             android:name=".views.maps.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".views.billboard.fragment.BillboardDash"></activity>
+        <activity android:name=".views.billboard.SessionWithTwitter"></activity>
     </application>
 
 </manifest>
