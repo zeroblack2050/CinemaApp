@@ -3,6 +3,7 @@ package com.cinemaapp.views.Bases;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.cinemaapp.helper.IValidateInternet;
@@ -14,7 +15,7 @@ import com.cinemaapp.presenters.BasePresenter;
  * Created by jasmany on 10/11/2017.
  */
 
-public class BaseViews <T extends BasePresenter> extends AppCompatActivity implements IBaseViews{
+public class BaseFragment<T extends BasePresenter> extends FragmentActivity implements IBaseViews{
 
     private IValidateInternet validateInternet;
     private ProgressDialog progressDialog;
@@ -24,7 +25,7 @@ public class BaseViews <T extends BasePresenter> extends AppCompatActivity imple
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        validateInternet = new ValidateInternet(BaseViews.this);
+        validateInternet = new ValidateInternet(BaseFragment.this);
         this.showAlertDialog = new ShowAlertDialog(this);
 
     }

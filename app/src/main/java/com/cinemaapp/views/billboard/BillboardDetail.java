@@ -11,6 +11,7 @@ import android.widget.VideoView;
 import com.cinemaapp.R;
 import com.cinemaapp.helper.Constants;
 import com.cinemaapp.helper.customclasses.CustomButton;
+import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.models.movies.Cast;
 import com.cinemaapp.models.movies.Genre;
 import com.cinemaapp.models.movies.MovieInfo;

@@ -14,12 +14,15 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.cinemaapp.App;
 import com.cinemaapp.R;
 import com.cinemaapp.helper.Constants;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.BillboardMoviePresenter;
 import com.cinemaapp.views.Bases.BaseViews;
 import com.cinemaapp.views.adapters.MovieItemListAdapter;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import java.util.ArrayList;
 
@@ -37,6 +40,7 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
     private MovieItemListAdapter movieItemListAdapter;
     private AlphaAnimation enterAnimation, exitAnimation;
     private Menu menu;
+    private Tracker mTracker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,11 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         loadEvents();
         initAnimationTour();
         runAnimationTour();
+
+
+        App myApp = (App) getApplication();
+        mTracker = myApp.gedDefaultTracker();
+
     }
 
 
@@ -145,10 +154,17 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         listViewListBillboard.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long ld) {
+
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("Pelicula")
+                        .setAction(movieInfoArrayList.get(position).getInfo().getTitle())
+                        .build());
+
                 Intent intent = new Intent(BillboardList.this, BillboardDetail.class);
                 intent.putExtra(Constants.MOVIES_ARRAY_LIST,movieInfoArrayList.get(position));
                 startActivity(intent);
                 //Toast.makeText(BillboardList.this, "En construción", Toast.LENGTH_LONG).show();
+
 
             }
         });

@@ -6,8 +6,8 @@ package com.cinemaapp.helper;
 
 public class Constants {
 
-    public static final String URL_XML_SIRVICES = "http://trailers.apple.com/trailers/home/xml";
-    public static final String URL_JSON_SIRVICES = "";
+    public static final String URL_XML_MOVIE_SERVICES = "http://trailers.apple.com/trailers/home/xml";
+    public static final String URL_JSON_CINEMAS_SERVICES = "http://shoppingproducts.herokuapp.com";
 
 
     public final static int TIME_OUT = 6;
@@ -17,7 +17,7 @@ public class Constants {
     public static final int UNAUTHORIZED_ERROR_CODE = 401;
     public static final int NOT_FOUND_ERROR_CODE = 404;
     public static final String MOVIES_ARRAY_LIST = "ArrayMovie";
-    public static final String MOVIE_LIST_NAME = "Estrenos";
+    public static final String FIRST_EXECUTION = "FirstExecution";
 
 
     public static final String EMPTY = "";

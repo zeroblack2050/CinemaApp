@@ -11,6 +11,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.cinemaapp.R;
+import com.cinemaapp.models.cinemas.Cinemas;
+import com.cinemaapp.presenters.BillboardDetailPresenter;
+import com.cinemaapp.presenters.BillboardMoviePresenter;
+import com.cinemaapp.presenters.MapsPresenter;
+import com.cinemaapp.presenters.SessionPresenter;
+import com.cinemaapp.views.Bases.BaseFragment;
+import com.cinemaapp.views.billboard.IBillboardDetail;
+import com.cinemaapp.views.billboard.ISessionWithTwitter;
 import com.directions.route.AbstractRouting;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
@@ -33,14 +41,18 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsActivity,OnMapReadyCallback {
 
+    //extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
+    private Cinemas cinemas;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        setPresenter(new MapsPresenter());
+        getPresenter().inject(this,getValidateInternet());
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if(checkPlayServices()) {
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -48,6 +60,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
         }
+    }
+
+
+    public void getCinemasLocation(Cinemas cinemas){
+        this.cinemas = cinemas;
     }
 
 
@@ -63,7 +80,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         createMarkers();
         changeStateControls();
 
@@ -248,4 +264,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return R.color.colorGray;
         }
     }
+
+
+    @Override
+    public void showToast(int message) {
+
+    }
+
+    @Override
+    public void showToast(String message) {
+
+    }
+
 }

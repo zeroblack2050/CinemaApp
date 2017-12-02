@@ -19,8 +19,8 @@ import retrofit.converter.SimpleXMLConverter;
 public class ServicesFactory {
 
 
-    private static final String API_JSON_BASE_PATH = Constants.URL_JSON_SIRVICES;
-    private static final String API_XML_BASE_PATH = Constants.URL_XML_SIRVICES;
+    private static final String API_JSON_BASE_PATH = Constants.URL_JSON_CINEMAS_SERVICES;
+    private static final String API_XML_BASE_PATH = Constants.URL_XML_MOVIE_SERVICES;
     private RestAdapter restAdapter;
 
     public ServicesFactory(TypeDecryption typeDecryption) {

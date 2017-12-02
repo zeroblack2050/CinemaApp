@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_number": "916478356756",
+    "project_id": "mapsbasicapp-183613"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916478356756:android:8cc113cf1aee83fe",
+        "android_client_info": {
+          "package_name": "com.cinemaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916478356756-64p6obvdme7b334nvdhmdpg847f3a76l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASvvV-y6LpGRckcUKQPK2_4axmSpZLALE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-110535613-1"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

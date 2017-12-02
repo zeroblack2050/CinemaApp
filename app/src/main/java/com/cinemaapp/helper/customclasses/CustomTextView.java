@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.cinemaapp.R;
+
 /**
  * Created by jasmany on 26/11/2017.
  */

@@ -255,8 +255,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="">
+        android:orientation="horizontal">
 
         <com.cinemaapp.helper.customclasses.CustomButton
             android:id="@+id/detailBackButton"

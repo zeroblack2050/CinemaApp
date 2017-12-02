@@ -1,5 +1,6 @@
 package com.cinemaapp.services;
 
+import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.models.movies.Movie;
 
 import java.util.ArrayList;
@@ -36,4 +37,7 @@ public interface IServices {
 
     @GET("/current.xml")
     Movie getMoviesModel();
+
+    @GET("/cinemas")
+    Cinemas getCinmeasModel();
 }

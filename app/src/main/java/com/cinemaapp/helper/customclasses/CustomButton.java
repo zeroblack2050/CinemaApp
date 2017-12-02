@@ -1,5 +1,6 @@
 package com.cinemaapp.helper.customclasses;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +13,7 @@ import com.cinemaapp.R;
  * Created by jasmany on 26/11/2017.
  */
 
+@SuppressLint("AppCompatCustomView")
 public class CustomButton extends Button {
 
     private int TEXTSIZE = 22;

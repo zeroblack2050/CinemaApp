@@ -46,8 +46,9 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
         sessionClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SessionWithTwitter.this, BillboardList.class);
-                startActivity(intent);
+                //Intent intent = new Intent(SessionWithTwitter.this, BillboardList.class);
+                //startActivity(intent);
+                finish();
             }
         });
     }
