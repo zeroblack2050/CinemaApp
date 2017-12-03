@@ -1,9 +1,13 @@
 package com.cinemaapp.presenters;
 
+import android.util.Log;
+
 import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.repository.cinemas.CinemasRepository;
 import com.cinemaapp.repository.cinemas.ICinemasRepository;
 import com.cinemaapp.views.maps.IMapsActivity;
+
+import java.util.ArrayList;
 
 import retrofit.RetrofitError;
 
@@ -20,7 +24,7 @@ public class MapsPresenter extends BasePresenter<IMapsActivity>{
     }
 
 
-    public void getCinemasList(){
+    public void getThreadCinemasList(){
         if(getValidateInternet().isConnected()){
             createThreadGetCinemas();
         }else {
@@ -33,16 +37,20 @@ public class MapsPresenter extends BasePresenter<IMapsActivity>{
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-
+                getCinemasFromServices();
             }
         });
         thread.start();
     }
 
 
-    private void getProductList() {
+    private void getCinemasFromServices() {
         try {
-            Cinemas cinemas = cinemasRepository.getCinemasModel();
+            ArrayList<Cinemas> cinemas = cinemasRepository.getCinemasModel();
+            getView().getCinemas(cinemas);
+            if (cinemas != null){
+                Log.e("Jasmany ", "Llamar al presenter");
+            }
         } catch (RetrofitError retrofitError) {
 
             //RepositoryError repositoryError = MapperError.convertRetrofitErrorToRepositoryError(retrofitError);
