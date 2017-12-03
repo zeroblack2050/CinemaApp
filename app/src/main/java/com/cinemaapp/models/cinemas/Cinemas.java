@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Superadmin1 on 02/12/2017.
@@ -19,13 +20,13 @@ public class Cinemas implements Serializable {
     @Expose
     private String name;
 
-    @SerializedName("_v")
+    @SerializedName("__v")
     @Expose
-    private String _v;
+    private String __v;
 
     @SerializedName("locationsList")
     @Expose
-    private LocationsList[] locationsList;
+    private ArrayList<LocationsList> locationsList;
 
 
     public String get_id() {
@@ -44,19 +45,19 @@ public class Cinemas implements Serializable {
         this.name = name;
     }
 
-    public String get_v() {
-        return _v;
+    public String get__v() {
+        return __v;
     }
 
-    public void set_v(String _v) {
-        this._v = _v;
+    public void set__v(String __v) {
+        this.__v = __v;
     }
 
-    public LocationsList[] getLocationsList() {
+    public ArrayList<LocationsList> getLocationsList() {
         return locationsList;
     }
 
-    public void setLocationsList(LocationsList[] locationsList) {
+    public void setLocationsList(ArrayList<LocationsList> locationsList) {
         this.locationsList = locationsList;
     }
 }

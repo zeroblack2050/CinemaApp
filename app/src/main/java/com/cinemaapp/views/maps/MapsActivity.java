@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -12,13 +11,8 @@ import android.widget.Toast;
 
 import com.cinemaapp.R;
 import com.cinemaapp.models.cinemas.Cinemas;
-import com.cinemaapp.presenters.BillboardDetailPresenter;
-import com.cinemaapp.presenters.BillboardMoviePresenter;
 import com.cinemaapp.presenters.MapsPresenter;
-import com.cinemaapp.presenters.SessionPresenter;
 import com.cinemaapp.views.Bases.BaseFragment;
-import com.cinemaapp.views.billboard.IBillboardDetail;
-import com.cinemaapp.views.billboard.ISessionWithTwitter;
 import com.directions.route.AbstractRouting;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
@@ -45,7 +39,7 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
 
     //extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
-    private Cinemas cinemas;
+    private ArrayList<Cinemas> cinemas;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +47,7 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
         setContentView(R.layout.activity_maps);
         setPresenter(new MapsPresenter());
         getPresenter().inject(this,getValidateInternet());
+        getPresenter().getThreadCinemasList();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if(checkPlayServices()) {
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -60,11 +55,6 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
         }
-    }
-
-
-    public void getCinemasLocation(Cinemas cinemas){
-        this.cinemas = cinemas;
     }
 
 
@@ -82,6 +72,17 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
         mMap = googleMap;
         createMarkers();
         changeStateControls();
+
+
+        //String a = cinemas.get(0).getName();
+
+        if (cinemas != null){
+            Toast.makeText(this, ""+ cinemas.get(0).getName(), Toast.LENGTH_SHORT).show();
+            //Log.e("Servicio", a);
+        }else {
+            Toast.makeText(this, "Null", Toast.LENGTH_LONG).show();
+        }
+
 
 
         // Add a marker in Sydney and move the camera: THIS CODE WORK
@@ -267,13 +268,7 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
 
 
     @Override
-    public void showToast(int message) {
-
+    public void getCinemas(ArrayList<Cinemas> cinemas) {
+        this.cinemas = cinemas;
     }
-
-    @Override
-    public void showToast(String message) {
-
-    }
-
 }

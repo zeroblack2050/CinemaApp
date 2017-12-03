@@ -1,7 +1,5 @@
 package com.cinemaapp.presenters;
 
-import android.util.Log;
-
 import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.repository.cinemas.CinemasRepository;
 import com.cinemaapp.repository.cinemas.ICinemasRepository;
@@ -49,7 +47,7 @@ public class MapsPresenter extends BasePresenter<IMapsActivity>{
             ArrayList<Cinemas> cinemas = cinemasRepository.getCinemasModel();
             getView().getCinemas(cinemas);
             if (cinemas != null){
-                Log.e("Jasmany ", "Llamar al presenter");
+                //Log.e("Jasmany ", "Llamar al presenter");
             }
         } catch (RetrofitError retrofitError) {
 

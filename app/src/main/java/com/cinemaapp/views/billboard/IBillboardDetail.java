@@ -1,6 +1,9 @@
 package com.cinemaapp.views.billboard;
 
+import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.views.Bases.IBaseViews;
+
+import java.util.ArrayList;
 
 /**
  * Created by jasmany on 19/11/2017.
@@ -8,6 +11,5 @@ import com.cinemaapp.views.Bases.IBaseViews;
 
 public interface IBillboardDetail extends IBaseViews{
 
-    void showToast(int message);
-    void showToast(String message);
+    void getCinemas(ArrayList<Cinemas> cinemas);
 }

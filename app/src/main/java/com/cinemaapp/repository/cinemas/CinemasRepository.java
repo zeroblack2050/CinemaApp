@@ -1,9 +1,13 @@
 package com.cinemaapp.repository.cinemas;
 
+import android.util.Log;
+
 import com.cinemaapp.helper.ServicesFactory;
 import com.cinemaapp.helper.TypeDecryption;
 import com.cinemaapp.models.cinemas.Cinemas;
-import com.cinemaapp.services.IServices;
+import com.cinemaapp.services.ICinemaServices;
+
+import java.util.ArrayList;
 
 import retrofit.RetrofitError;
 
@@ -13,16 +17,18 @@ import retrofit.RetrofitError;
 
 public class CinemasRepository implements ICinemasRepository {
 
-    private IServices services;
+    private ICinemaServices services;
 
     public CinemasRepository() {
         ServicesFactory servicesFactory = new ServicesFactory(TypeDecryption.JSON);
-        services = (IServices) servicesFactory.getInstance(IServices.class);
+        services = (ICinemaServices) servicesFactory.getInstance(ICinemaServices.class);
+        Log.e("Jasmany ", "call to servicesFactory_FromCinemasRepository");
     }
 
     @Override
-    public Cinemas getCinemasModel() throws RetrofitError {
-        Cinemas cinemas = services.getCinmeasModel();
+    public ArrayList<Cinemas> getCinemasModel() throws RetrofitError {
+        ArrayList<Cinemas> cinemas = services.getCinemasModel();
+        Log.e("Jasmany ", "call to getCinemasModel_FromCinemasRepository ");
         return cinemas;
     }
 }

@@ -1,5 +1,7 @@
 package com.cinemaapp.helper;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -19,8 +21,9 @@ import retrofit.converter.SimpleXMLConverter;
 public class ServicesFactory {
 
 
-    private static final String API_JSON_BASE_PATH = Constants.URL_JSON_CINEMAS_SERVICES;
+
     private static final String API_XML_BASE_PATH = Constants.URL_XML_MOVIE_SERVICES;
+    private static final String API_JSON_BASE_PATH = Constants.URL_JSON_CINEMAS_SERVICES;
     private RestAdapter restAdapter;
 
     public ServicesFactory(TypeDecryption typeDecryption) {
@@ -32,6 +35,7 @@ public class ServicesFactory {
                 converter = new SimpleXMLConverter();
                 break;
             case JSON:
+                Log.e("Jasmany ", "call to service factory json");
                 baseURL = API_JSON_BASE_PATH;
                 converter = getGsonConverter();
                 break;

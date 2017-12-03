@@ -9,21 +9,21 @@ import java.io.Serializable;
  * Created by Superadmin1 on 02/12/2017.
  */
 
-public class Location implements Serializable {
+public class LocationCine implements Serializable {
 
     @SerializedName("coordinates")
     @Expose
-    private String [] coordinates;
+    private Double []  coordinates;
 
     @SerializedName("type")
     @Expose
     private String type;
 
-    public String[] getCoordinates() {
+    public Double[] getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(String[] coordinates) {
+    public void setCoordinates(Double[] coordinates) {
         this.coordinates = coordinates;
     }
 

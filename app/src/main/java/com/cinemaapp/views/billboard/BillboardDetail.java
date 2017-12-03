@@ -2,6 +2,7 @@ package com.cinemaapp.views.billboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.cinemaapp.models.movies.Cast;
 import com.cinemaapp.models.movies.Genre;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.BillboardDetailPresenter;
+import com.cinemaapp.repository.cinemas.CinemasRepository;
 import com.cinemaapp.views.Bases.BaseViews;
 import com.cinemaapp.views.maps.MapsActivity;
 import com.squareup.picasso.Picasso;
@@ -30,13 +32,15 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
     private TextView title, genre, rating, studio, director, cast, description;
     private VideoView videoView;
     private CustomButton buttonLaunchMap, buttonBackToBillboard;
+    private ArrayList<Cinemas> cinemas;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.billboard_detail);
-        setPresenter(new BillboardDetailPresenter());
+        setPresenter(new BillboardDetailPresenter(new CinemasRepository()));
         getPresenter().inject(this, getValidateInternet());
+        getPresenter().getThreadCinemasList();
         receiveMovies();
         findComponents();
         setDataComponents();
@@ -152,13 +156,17 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
 
     //Methos from BaseViews and IBillboardDetail
 
-    @Override
-    public void showToast(int message) {
-
-    }
 
     @Override
-    public void showToast(String message) {
+    public void getCinemas(ArrayList<Cinemas> cinemas) {
+        this.cinemas = cinemas;
+        if (cinemas != null){
+            Log.e("Jasmany detail ", "receive object cinema");
+            Log.e("Jasmany detail ", ""+cinemas.get(0).getName());
+            Log.e("Jasmany detail ", ""+cinemas.get(0).getLocationsList().get(0).getName());
+            Log.e("Jasmany detail ", ""+cinemas.get(0).getLocationsList().get(0).getLocation().getType());
+
+        }
 
     }
 }

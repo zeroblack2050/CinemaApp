@@ -21,7 +21,7 @@ public class LocationsList implements Serializable {
 
     @SerializedName("location")
     @Expose
-    private Location location;
+    private LocationCine location;
 
 
     public String get_id() {
@@ -40,11 +40,11 @@ public class LocationsList implements Serializable {
         this.name = name;
     }
 
-    public Location getLocation() {
+    public LocationCine getLocation() {
         return location;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation(LocationCine location) {
         this.location = location;
     }
 }
