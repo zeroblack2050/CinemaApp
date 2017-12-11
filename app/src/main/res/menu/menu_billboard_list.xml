@@ -7,7 +7,16 @@
         android:icon="@drawable/twitter_icon"
         android:iconTint="@drawable/twitter_icon"
         android:iconTintMode="@drawable/twitter_icon"
-        android:title="Twitter"
+        android:title="@string/menu_billboard_twitter"
+        />
+
+    <item
+        android:id="@+id/menu_tour_guide"
+        android:orderInCategory="100"
+        android:icon="@drawable/twitter_icon"
+        android:iconTint="@drawable/twitter_icon"
+        android:iconTintMode="@drawable/twitter_icon"
+        android:title="@string/menu_billboard_guide"
         />
 
 </menu>
