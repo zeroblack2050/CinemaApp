@@ -2,6 +2,8 @@ package com.cinemaapp.views.billboard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,13 +12,11 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.BounceInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.cinemaapp.App;
 import com.cinemaapp.R;
 import com.cinemaapp.helper.Constants;
+import com.cinemaapp.helper.CustomSharedPreferences;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.presenters.BillboardMoviePresenter;
 import com.cinemaapp.views.Bases.BaseViews;
@@ -36,10 +36,13 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
     private ArrayList<MovieInfo> movieInfoArrayList;
     private ListView listViewListBillboard;
     private android.support.v7.widget.Toolbar toolbar;
-    private ProgressBar progressBarBillboard;
+    private AppBarLayout appBarLayout;
+    private ContentLoadingProgressBar progressBarBillboard;
+
     private MovieItemListAdapter movieItemListAdapter;
     private AlphaAnimation enterAnimation, exitAnimation;
-    private Menu menu;
+    private Sequence sequence;
+    private CustomSharedPreferences sharedPreferencesBill;
     private Tracker mTracker;
 
     @Override
@@ -49,8 +52,7 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         setPresenter(new BillboardMoviePresenter());
         getPresenter().inject(this,getValidateInternet());
         loadComponents();
-        instanceObjects();
-        loadEvents();
+        progressBarBillboard.show();
         initAnimationTour();
         runAnimationTour();
 
@@ -59,6 +61,26 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         mTracker = myApp.gedDefaultTracker();
 
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getPresenter().callThreadToGetMovies();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        progressBarBillboard.show();
+        getPresenter().callThreadToGetMovies();
+    }
+
+    /*
+    *
+    *
+    *
+    * */
+
 
 
     private void initAnimationTour() {
@@ -73,7 +95,7 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
 
     private void runAnimationTour() {
 
-        ChainTourGuide tourGuideBIllboard = ChainTourGuide.init(this)
+        ChainTourGuide tourGuideBillboard = ChainTourGuide.init(this)
                 .setToolTip(new ToolTip()
                         .setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -81,12 +103,12 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
 
                             }
                         })
-                        .setTitle("Cartelera")
-                        .setDescription("En esta sección encontrara las últimas peliculas")
+                        .setTitle(getString(R.string.billboard_listview_billboard))
+                        .setDescription(getString(R.string.billboard_listview_tour_description_list))
                         .setGravity(Gravity.BOTTOM)
 
                 )
-                .playLater(listViewListBillboard);
+                .playLater(appBarLayout);
 
         ChainTourGuide tourGuideMenu = ChainTourGuide.init(this)
                 .setToolTip(new ToolTip()
@@ -96,15 +118,15 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
 
                             }
                         })
-                        .setTitle("Twitter")
-                        .setDescription("El menu desplegable le permite iniciar sesión con twitter")
+                        .setTitle(getString(R.string.twitter))
+                        .setDescription(getString(R.string.twitter_descriptions))
                         .setGravity(Gravity.BOTTOM)
 
                 )
                 .playLater(toolbar);
 
-        Sequence sequence = new Sequence.SequenceBuilder()
-                .add(tourGuideBIllboard,tourGuideMenu)
+        sequence = new Sequence.SequenceBuilder()
+                .add(tourGuideBillboard,tourGuideMenu)
                 .setDefaultOverlay(new Overlay()
                         .setEnterAnimation(enterAnimation)
                         .setExitAnimation(exitAnimation)
@@ -113,33 +135,21 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
                 .setContinueMethod(Sequence.ContinueMethod.Overlay)
                 .build();
 
-        ChainTourGuide.init(this).playInSequence(sequence);
-    }
-
-
-
-
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        getPresenter().callThreadToGetMovies();
-    }
-
-    //Start: Own methods
-    private void loadEvents() {
+        if (sharedPreferencesBill.getTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY) != Constants.TOUR_GUIDE_MADE){
+            ChainTourGuide.init(this).playInSequence(sequence);
+            sharedPreferencesBill.saveTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY,Constants.TOUR_GUIDE_MADE);
+            //Toast.makeText(this, ""+sharedPreferencesBill.getTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY), Toast.LENGTH_SHORT).show();
+        }
+        //sharedPreferencesBill.deleteTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY);
 
     }
 
-    public void instanceObjects() {
-        //movieItemListAdapter = new MovieItemListAdapter();
-    }
 
     public void loadComponents() {
+        sharedPreferencesBill = new CustomSharedPreferences(this);
         listViewListBillboard =  findViewById(R.id.billboardAppListViewMovieItem);
-        //progressBarBillboard =  findViewById(R.id.billboardAppProgressBar);
+        progressBarBillboard =  findViewById(R.id.billboardAppProgressBar);
+        appBarLayout = findViewById(R.id.billboard_appbar_layout);
         toolbar = findViewById(R.id.billboard_toolbar_menu);
         toolbar.setTitle(Constants.EMPTY);
         setSupportActionBar(toolbar);
@@ -180,12 +190,9 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
     //Start: Methods from BaseViews and IbaseViews
     @Override
     public void showProgress(int message) {
-    }
-
-    @Override
-    public void hideProgress() {
 
     }
+
     //End: Methods from BaseViews and IBaseViews
 
 
@@ -198,16 +205,10 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                //progress.hide();
+                progressBarBillboard.hide();
                 callMovieAdapter(movieInfoArrayList);
-                hideProgress();
             }
         });
-    }
-
-    @Override
-    public void showMoviesGrid(ArrayList<MovieInfo> movieInfoArrayList) {
-
     }
 
     @Override
@@ -222,8 +223,6 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
     //End: Methods heritage
 
     //Start: Option Menu
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.menu_init_session){
@@ -235,12 +234,17 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
             return true;
         }
 
+        if (item.getItemId() == R.id.menu_tour_guide){
+            sharedPreferencesBill.deleteTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY);
+            runAnimationTour();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_billboard,menu);
+        getMenuInflater().inflate(R.menu.menu_billboard_list,menu);
 
         return super.onCreateOptionsMenu(menu);
     }

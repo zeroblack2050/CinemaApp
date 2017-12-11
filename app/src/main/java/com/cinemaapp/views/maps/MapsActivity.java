@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,7 +14,6 @@ import com.cinemaapp.R;
 import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.presenters.MapsPresenter;
 import com.cinemaapp.views.Bases.BaseFragment;
-import com.directions.route.AbstractRouting;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
 import com.directions.route.Routing;
@@ -35,11 +35,12 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 
-public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsActivity,OnMapReadyCallback {
-
+public class MapsActivity extends BaseFragment<MapsPresenter> implements OnMapReadyCallback,IMapsActivity {
+    //extends BaseViews<BillboardDetailPresenter> implements IBillboardDetail
     //extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
-    private ArrayList<Cinemas> cinemas;
+    private ArrayList<Cinemas> cinemasArrayList = new ArrayList<>();
+    private ArrayList<LatLng> routeList = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
         setPresenter(new MapsPresenter());
         getPresenter().inject(this,getValidateInternet());
         getPresenter().getThreadCinemasList();
+        //receiveCinemas();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         if(checkPlayServices()) {
             // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -55,80 +57,90 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(this);
         }
+
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    @Override
+    public void getCinemasMaps(ArrayList<Cinemas> cinemas) {
+        Log.e("CinemaArrayList 80 ", "" + cinemas.size());
+        this.cinemasArrayList = cinemas;
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                createMarkers();
+            }
+        });
+
+    }
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        createMarkers();
+
+        //Comment: The loading of the map becomes slow
+        /*boolean success = googleMap.setMapStyle(
+                MapStyleOptions
+                        .loadRawResourceStyle(this, R.raw.maps_dark_style));*/
+
         changeStateControls();
 
+    }
 
-        //String a = cinemas.get(0).getName();
 
-        if (cinemas != null){
-            Toast.makeText(this, ""+ cinemas.get(0).getName(), Toast.LENGTH_SHORT).show();
-            //Log.e("Servicio", a);
+
+    private void createMarkers() {
+
+        Log.e("CinemaArrayList 127 ", "" + cinemasArrayList.size());
+
+        if (cinemasArrayList != null){
+
+            for (int i = 0; i< cinemasArrayList.size();i++) {
+
+                for (int j = 0; j< cinemasArrayList.get(i).getLocationsList().size();j++) {
+
+                    Log.e("CinemaArrayList 133 ", "" + cinemasArrayList.size());
+
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(
+                                    cinemasArrayList.get(i).getLocationsList().get(j).getLocation().getCoordinates()[1],
+                                    cinemasArrayList.get(i).getLocationsList().get(j).getLocation().getCoordinates()[0]))
+                            .title(cinemasArrayList.get(i).getName()+"\n")
+                            .snippet(cinemasArrayList.get(i).getLocationsList().get(j).getName())
+                            .icon(bitPapDescriptorFromVector(this,R.drawable.places_vector)));
+
+                    routeList.add(new LatLng(
+                            cinemasArrayList.get(i).getLocationsList().get(j).getLocation().getCoordinates()[1],
+                            cinemasArrayList.get(i).getLocationsList().get(j).getLocation().getCoordinates()[0]));
+
+
+
+                }
+            }
+        }
+
+        //method to calculate routes on webservice
+        if (routeList.size()==1){
+            Log.e("RouteList Size 157 ", "" + routeList.size());
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(routeList.get(0),13));
+        }else if(routeList.size()>1){
+            Log.e("RouteList Size 160 ", "" + routeList.size());
+            centerRoutes(routeList);
         }else {
-            Toast.makeText(this, "Null", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "jas", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
 
-
-        // Add a marker in Sydney and move the camera: THIS CODE WORK
-        /*LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));*/
-    }
-
-    private void createMarkers() {
-        // Add a marker in Sydney and move the camera
-        LatLng myHome = new LatLng(6.295541547310109, -75.5470822694702);
-        mMap.addMarker(new MarkerOptions()
-                .position(myHome)
-                .title("Marker in home")
-                .snippet("Jasmany")
-                .icon(bitPapDescriptorFromVector(this,R.drawable.places_vector)));
-
-        // Add a marker in Sydney and move the camera
-        LatLng myOffice = new LatLng(6.2501477, -75.5694747);
-        mMap.addMarker(new MarkerOptions()
-                .position(myOffice)
-                .title("Marker in office")
-                .snippet("Jasmany")
-                .icon(bitPapDescriptorFromVector(this,R.drawable.places_vector)));
-
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(myOffice));
-
-
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myHome,10));
-
-        /*Polyline polyline = mMap.addPolyline(new PolylineOptions()
-                //.add(myHome)
-                .width(4)
-                .color(Color.BLUE)
-        );*/
-
-        calculateRoute(myHome,myOffice);
-
-
-        //method to calculate routes on webservice
-        //calculateRouteList(routeList);
     }
 
     private void changeStateControls() {
         UiSettings uiSettings = mMap.getUiSettings();
         uiSettings.setZoomControlsEnabled(true);
+        uiSettings.setCompassEnabled(true);//Brujula
+        uiSettings.setMyLocationButtonEnabled(true);//Ubicación
     }
 
     private boolean checkPlayServices(){
@@ -201,12 +213,11 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
 
 
         Routing routing = new Routing.Builder()
-                .alternativeRoutes(true)
-                .travelMode(AbstractRouting.TravelMode.DRIVING)
+                //.alternativeRoutes(true)
+                //.travelMode(AbstractRouting.TravelMode.DRIVING)
                 .waypoints(points)
-                .alternativeRoutes(true)
                 .key(getString(R.string.google_maps_key))
-                .optimize(false)
+                //.optimize(false)
                 .withListener(routingListener)
                 .build();
         routing.execute();
@@ -218,11 +229,11 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
     public void calculateRouteList(ArrayList<LatLng> arrayRoutes) {
 
         Routing routing = new Routing.Builder()
-                .alternativeRoutes(true)
-                .travelMode(AbstractRouting.TravelMode.DRIVING)
+                //.alternativeRoutes(true)
+                //.travelMode(AbstractRouting.TravelMode.DRIVING)
                 .waypoints(arrayRoutes)
                 .key(getString(R.string.google_maps_key))
-                .optimize(false)
+                //.optimize(false)
                 .withListener(routingListener)
                 .build();
         routing.execute();
@@ -242,7 +253,7 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
         mMap.animateCamera((CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding)));
     }
 
-
+    @NonNull
     private BitmapDescriptor bitPapDescriptorFromVector(Context context, int vectorId) {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorId);
         vectorDrawable.setBounds(0,0,vectorDrawable.getIntrinsicWidth(),vectorDrawable.getIntrinsicHeight());
@@ -266,9 +277,4 @@ public class MapsActivity extends BaseFragment<MapsPresenter> implements IMapsAc
         }
     }
 
-
-    @Override
-    public void getCinemas(ArrayList<Cinemas> cinemas) {
-        this.cinemas = cinemas;
-    }
 }

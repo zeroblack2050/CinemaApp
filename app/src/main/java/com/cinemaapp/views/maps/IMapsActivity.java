@@ -11,6 +11,6 @@ import java.util.ArrayList;
 
 public interface IMapsActivity extends IBaseViews {
 
-    void getCinemas(ArrayList<Cinemas> cinemas);
+    void getCinemasMaps(ArrayList<Cinemas> cinemas);
 
 }

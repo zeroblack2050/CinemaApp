@@ -1,8 +1,7 @@
 package com.cinemaapp.presenters;
 
-import android.util.Log;
-
 import com.cinemaapp.R;
+import com.cinemaapp.helper.TypeDecryption;
 import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.models.movies.MovieInfo;
 import com.cinemaapp.repository.MapperError;
@@ -23,7 +22,7 @@ public class BillboardMoviePresenter extends BasePresenter<IBillboard> {
     private MoviesRepository moviesRepository;
 
     public BillboardMoviePresenter() {
-        moviesRepository = new MoviesRepository();
+        moviesRepository = new MoviesRepository(TypeDecryption.XML);
 
     }
 

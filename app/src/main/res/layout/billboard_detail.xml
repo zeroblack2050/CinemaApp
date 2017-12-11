@@ -18,9 +18,9 @@
         android:background="@color/colorPrimaryDark">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/detailTtoolbar"
+            android:id="@+id/detailToolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Detalle"
+                android:text="@string/billboard_detail_detail"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textSize="50dp"
                 android:gravity="left"
@@ -61,6 +61,7 @@
             android:padding="3dp">
 
             <LinearLayout
+                android:id="@+id/billboard_detail_linear_basic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -88,7 +89,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Titulo"
+                            android:text="@string/billboard_detail_title"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView
@@ -107,7 +108,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Genero"
+                            android:text="@string/billboard_detail_genre"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView
@@ -125,7 +126,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Calificación"
+                            android:text="@string/billboard_detail_rating"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView
@@ -144,7 +145,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Director"
+                            android:text="@string/billboard_detail_director"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView
@@ -163,7 +164,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Reparto"
+                            android:text="@string/billboard_detail_cast"
                             android:textSize="7dp"
                             />
 
@@ -191,7 +192,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Estudio"
+                            android:text="@string/billboard_detail_studio"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView
@@ -209,6 +210,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/billboard_detail_linear_synopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -217,7 +219,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sinopsis"
+                    android:text="@string/billboard_detail_synopsis"
                     android:textSize="7dp"/>
 
                 <ScrollView
@@ -232,16 +234,17 @@
 
                 </ScrollView>
 
+                <VideoView
+                    android:id="@+id/detailVideoView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="00dp" />
 
             </LinearLayout>
 
 
 
 
-            <VideoView
-                android:id="@+id/detailVideoView"
-                android:layout_width="wrap_content"
-                android:layout_height="00dp" />
+
 
 
 
@@ -258,24 +261,24 @@
         android:orientation="horizontal">
 
         <com.cinemaapp.helper.customclasses.CustomButton
-            android:id="@+id/detailBackButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Volver"
-            android:layout_gravity="bottom"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_alignParentEnd="true"/>
-
-        <com.cinemaapp.helper.customclasses.CustomButton
             android:id="@+id/detailButtonToMap"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Ver salas de cine"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:text="@string/billboard_detail_toviewcinemas"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="5dp"
             android:layout_alignParentStart="true"
             />
+
+        <com.cinemaapp.helper.customclasses.CustomButton
+            android:id="@+id/detailBackButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="@string/billboard_detail_back"
+            android:layout_gravity="bottom"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 

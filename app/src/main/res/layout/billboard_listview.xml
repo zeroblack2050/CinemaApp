@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.cinemaapp.views.billboard.BillboardList"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
 
 
@@ -23,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="?attr/colorPrimaryDark"
+                android:background="@color/colorPrimaryDark"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -36,7 +37,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Cartelera"
+                    android:text="@string/billboard_listview_billboard"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="50dp"
                     android:gravity="left"
@@ -51,20 +52,29 @@
     </android.support.design.widget.AppBarLayout>
 
 
-   <!--<ProgressBar
-        android:id="@+id/billboardAppProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        style="@style/Base.TextAppearance.AppCompat.Small">
 
-    </ProgressBar>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/billboardAppProgressBar"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/progress_bar_icon"
+            android:indeterminateDuration="400"
+            >
+
+        </android.support.v4.widget.ContentLoadingProgressBar>
+
 
         <ListView
             android:id="@+id/billboardAppListViewMovieItem"

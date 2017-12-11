@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_session_tour_guide"
+        android:id="@+id/menu_detail_tour_guide"
         android:orderInCategory="100"
         android:icon="@drawable/twitter_icon"
         android:iconTint="@drawable/twitter_icon"

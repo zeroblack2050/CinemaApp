@@ -1,8 +1,10 @@
 package com.cinemaapp.presenters;
 
+import android.util.Log;
+
+import com.cinemaapp.helper.TypeDecryption;
 import com.cinemaapp.models.cinemas.Cinemas;
-import com.cinemaapp.repository.cinemas.CinemasRepository;
-import com.cinemaapp.repository.cinemas.ICinemasRepository;
+import com.cinemaapp.repository.movies.MoviesRepository;
 import com.cinemaapp.views.maps.IMapsActivity;
 
 import java.util.ArrayList;
@@ -15,10 +17,10 @@ import retrofit.RetrofitError;
 
 public class MapsPresenter extends BasePresenter<IMapsActivity>{
 
-    private ICinemasRepository cinemasRepository;
+    private MoviesRepository moviesRepository;
 
     public MapsPresenter() {
-        cinemasRepository = new CinemasRepository();
+        moviesRepository = new MoviesRepository(TypeDecryption.JSON);
     }
 
 
@@ -44,11 +46,9 @@ public class MapsPresenter extends BasePresenter<IMapsActivity>{
 
     private void getCinemasFromServices() {
         try {
-            ArrayList<Cinemas> cinemas = cinemasRepository.getCinemasModel();
-            getView().getCinemas(cinemas);
-            if (cinemas != null){
-                //Log.e("Jasmany ", "Llamar al presenter");
-            }
+            ArrayList<Cinemas> cinemas = moviesRepository.getCinemas();
+            getView().getCinemasMaps(cinemas);
+            Log.e("Maps P", "Leego " + cinemas.size());
         } catch (RetrofitError retrofitError) {
 
             //RepositoryError repositoryError = MapperError.convertRetrofitErrorToRepositoryError(retrofitError);

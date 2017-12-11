@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rotate xmlns:android="http://schemas.android.com/apk/res/android"
-    android:pivotX="50%" android:pivotY="50%" android:fromDegrees="0"
-    android:toDegrees="30">
-    <shape android:shape="ring" android:innerRadiusRatio="4"
-        android:thicknessRatio="8" android:useLevel="false">
-        <size android:width="76dip" android:height="76dip" />
-        <gradient android:type="sweep" android:useLevel="false"
+<rotate
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:fromDegrees="0"
+    android:toDegrees="360"
+    >
+
+    <shape android:shape="ring"
+        android:innerRadiusRatio="4"
+        android:thicknessRatio="120"
+        android:useLevel="false">
+        <size
+            android:width="50dip"
+            android:height="50dip" />
+        <gradient
+            android:type="sweep"
+            android:useLevel="false"
             android:startColor="#303F9F"
             android:centerColor="#303F9F"
-            android:endColor="#E8EAF6"
+            android:endColor="#FAFAFA"
             android:angle="0"/>
     </shape>
 </rotate>

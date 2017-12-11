@@ -1,7 +1,5 @@
 package com.cinemaapp.helper;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -35,7 +33,6 @@ public class ServicesFactory {
                 converter = new SimpleXMLConverter();
                 break;
             case JSON:
-                Log.e("Jasmany ", "call to service factory json");
                 baseURL = API_JSON_BASE_PATH;
                 converter = getGsonConverter();
                 break;

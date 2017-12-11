@@ -2,6 +2,7 @@ package com.cinemaapp.repository.movies;
 
 import com.cinemaapp.helper.ServicesFactory;
 import com.cinemaapp.helper.TypeDecryption;
+import com.cinemaapp.models.cinemas.Cinemas;
 import com.cinemaapp.models.movies.Movie;
 import com.cinemaapp.services.IServices;
 
@@ -17,8 +18,8 @@ public class MoviesRepository implements IMoviesRepository {
 
     private IServices services;
 
-    public MoviesRepository() {
-        ServicesFactory servicesFactory = new ServicesFactory(TypeDecryption.XML);
+    public MoviesRepository(TypeDecryption typeDecryption) {
+        ServicesFactory servicesFactory = new ServicesFactory(typeDecryption);
         services = (IServices) servicesFactory.getInstance(IServices.class);
     }
 
@@ -26,5 +27,11 @@ public class MoviesRepository implements IMoviesRepository {
     public Movie getMoviesModel() throws RetrofitError {
         Movie movie = services.getMoviesModel();
         return movie;
+    }
+
+    @Override
+    public ArrayList<Cinemas> getCinemas() throws RetrofitError{
+        ArrayList<Cinemas> cinemas = services.getCinemasModel();
+        return cinemas;
     }
 }

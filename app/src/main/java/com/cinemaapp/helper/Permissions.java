@@ -1,4 +1,4 @@
-package com.demodevices;
+package com.cinemaapp.helper;
 
 import android.app.Activity;
 import android.content.Context;

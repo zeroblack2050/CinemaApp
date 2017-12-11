@@ -43,7 +43,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Título"
+                        android:text="@string/billboard_detail_title"
                         android:textSize="7dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:gravity="center"
@@ -67,7 +67,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Genero"
+                        android:text="@string/billboard_detail_genre"
                         android:textSize="7dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:gravity="center"
@@ -92,7 +92,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Clasificación"
+                        android:text="@string/billboard_detail_rating"
                         android:textSize="7dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:gravity="center"
@@ -119,7 +119,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Estudio"
+                        android:text="@string/billboard_detail_studio"
                         android:textSize="7dp"
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                         android:gravity="center"

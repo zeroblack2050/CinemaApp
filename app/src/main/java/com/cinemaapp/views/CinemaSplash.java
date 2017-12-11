@@ -12,7 +12,9 @@ import com.cinemaapp.views.billboard.BillboardList;
 public class CinemaSplash extends AppCompatActivity {
 
     private LottieAnimationView animationView;
-    private int TIMEOUT_ANIMATION = 10000;
+    private int TIMEOUT_ANIMATION = 90000;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,7 @@ public class CinemaSplash extends AppCompatActivity {
         loadSplash();
 
     }
+
 
     @Override
     protected void onResume() {
@@ -48,6 +51,7 @@ public class CinemaSplash extends AppCompatActivity {
             public void onAnimationStart(Animator animator) {
                 animationView.loop(false);
                 animationView.setTop(TIMEOUT_ANIMATION);
+
             }
 
             @Override

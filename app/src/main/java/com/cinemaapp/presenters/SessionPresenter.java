@@ -8,6 +8,14 @@ import com.cinemaapp.views.billboard.ISessionWithTwitter;
 
 public class SessionPresenter extends BasePresenter<ISessionWithTwitter> {
 
+
     public SessionPresenter() {
+
     }
+
+    private void initSessionTwitter(){
+
+
+    }
+
 }
