@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/billboard_detail_detail"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textSize="50dp"
+                android:textSize="45dp"
                 android:gravity="left"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-condensed"
@@ -108,7 +108,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/billboard_detail_genre"
+                            android:text="@string/billboard_detail_gender"
                             android:textSize="7dp"
                             />
                         <com.cinemaapp.helper.customclasses.CustomTextView

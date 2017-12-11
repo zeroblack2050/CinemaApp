@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -82,6 +83,8 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
         super.onCreate(savedInstanceState);
         Twitter.initialize(this);
         setContentView(R.layout.session_with_twitter);
+        setPresenter(new SessionPresenter());
+        getPresenter().inject(this,getValidateInternet());
         loadComponents();
         loginTwitter(this);
         showCustomDialog();
@@ -271,8 +274,7 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
         }else{
             for (int i=0; i <clipData.getItemCount(); i++){
                 grantUriPermission(getPackageName(), clipData.getItemAt(i).getUri(),Intent.FLAG_GRANT_READ_URI_PERMISSION);
-
-                setArrayFilesName(clipData.getItemAt(i).getUri().toString(), Constants.FROM_GALLERY);
+                setArrayFilesName(getImagePathFromUri(clipData.getItemAt(i).getUri()), Constants.FROM_GALLERY);
             }
         }
 
@@ -280,8 +282,21 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
     }
     private void resultGalleryKitkatLess(Uri uri) {
         grantUriPermission(getPackageName(),uri,Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        Log.e("resultGalleryKitka 283", ""+uri.getPath());
-        setArrayFilesName(uri.toString(), Constants.FROM_GALLERY);
+        setArrayFilesName(getImagePathFromUri(uri), Constants.FROM_GALLERY);
+    }
+    public String getImagePathFromUri(Uri uri){
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":")+1);
+        cursor.close();
+        cursor = getContentResolver().query(
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+        return Constants.SUFFIX_LOCAL_FILE+path;
     }
     private void setArrayFilesName(String file, int from) {
         if (from == Constants.FROM_CAMERA){
@@ -291,7 +306,6 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
         if (from == Constants.FROM_GALLERY){
             arrayFiles = file;
         }
-        Log.e("SetFileName 292", ""+file );
         sharedPreferences.saveTwitterData(Constants.IMAGE_KEY,arrayFiles);
 
         Picasso
@@ -319,7 +333,7 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
             @Override
             public void onClick(View view) {
 
-                setDataComponents("file:","","","","");
+                setDataComponents(Constants.SUFFIX_LOCAL_FILE,Constants.EMPTY,Constants.EMPTY,Constants.EMPTY,Constants.EMPTY);
                 deleteMySharedPreferences(
                         Constants.IMAGE_KEY,
                         Constants.USER_KEY,
@@ -383,15 +397,25 @@ public class SessionWithTwitter extends BaseViews<SessionPresenter> implements I
             String nLikes,
             String nFWes,
             String nFWing){
-        Log.e("setDataComponents","  385   "+sharedPreferences.getTwitterData(Constants.IMAGE_KEY));
 
-        Picasso
-                .with(this)
-                .load(nUri)
-                .resize(140, 150)
-                .centerCrop()
-                .error(R.drawable.image_not_founded)
-                .into(profilePhoto);
+        if(nUri != Constants.SUFFIX_LOCAL_FILE){
+            Picasso
+                    .with(this)
+                    .load(nUri)
+                    .resize(140, 150)
+                    .centerCrop()
+                    .error(R.drawable.image_not_founded)
+                    .into(profilePhoto);
+        }else{
+            Picasso
+                    .with(this)
+                    .load(nUri)
+                    .resize(140, 150)
+                    .centerCrop()
+                    .into(profilePhoto);
+        }
+
+
         nameUser.setText(nUser);
         likes.setText(nLikes);
         followers.setText(nFWes);

@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/session_with_twitter_profiletwitter"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textSize="50dp"
+                android:textSize="45dp"
                 android:gravity="left"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-condensed"
@@ -95,7 +95,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.2"
+            android:layout_weight="0.15"
             android:orientation="vertical">
 
             <ImageView
@@ -124,7 +124,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.15"
             android:orientation="vertical">
 
             <ImageView
@@ -150,7 +150,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.1"
+            android:layout_weight="0.15"
             android:orientation="vertical">
 
             <ImageView
@@ -178,12 +178,14 @@
     <LinearLayout
         android:id="@+id/session_twitter_linear_buttons"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
 
         <com.twitter.sdk.android.core.identity.TwitterLoginButton
             android:id="@+id/session_twitter_button_twitter"
-            android:layout_width="225dp"
+            android:layout_width="300dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -194,7 +196,7 @@
 
         <Button
             android:id="@+id/session_twitter_button_close"
-            android:layout_width="225dp"
+            android:layout_width="300dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -219,7 +221,7 @@
         android:id="@+id/session_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"/>
+        android:layout_weight="0.6"/>
 
 
 

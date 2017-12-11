@@ -138,7 +138,6 @@ public class BillboardList extends BaseViews<BillboardMoviePresenter> implements
         if (sharedPreferencesBill.getTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY) != Constants.TOUR_GUIDE_MADE){
             ChainTourGuide.init(this).playInSequence(sequence);
             sharedPreferencesBill.saveTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY,Constants.TOUR_GUIDE_MADE);
-            //Toast.makeText(this, ""+sharedPreferencesBill.getTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY), Toast.LENGTH_SHORT).show();
         }
         //sharedPreferencesBill.deleteTourGuide(Constants.BILLBOARD_TOUR_GUIDE_KEY);
 

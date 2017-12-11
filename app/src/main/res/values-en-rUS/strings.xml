@@ -11,7 +11,7 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="billboard_detail_detail">Detail</string>
     <string name="billboard_detail_title">Title</string>
-    <string name="billboard_detail_genre">Genre</string>
+    <string name="billboard_detail_gender">Gender</string>
     <string name="billboard_detail_rating">Rating</string>
     <string name="billboard_detail_director">Director</string>
     <string name="billboard_detail_cast">Cast</string>
@@ -29,7 +29,6 @@
     <string name="menu_billboard_twitter">Login with Twitter</string>
     <string name="menu_billboard_guide">Know the app</string>
     <string name="session_with_twitter_close_session">Log out</string>
-
     <string name="billboard_listview_tour_description_list">In this list you will find the latest movies</string>
     <string name="twitter">Twitter</string>
     <string name="twitter_descriptions">The pull-down menu allows you to log in with twitter</string>
@@ -37,7 +36,6 @@
     <string name="session_with_twitter_photo_description">Here you can see your twitter profile picture, you can also use a local image</string>
     <string name="session_with_twitter_button">Log In</string>
     <string name="session_with_twitter_button_description">This button allows you to start or close session</string>
-
     <string name="billboard_detail_basics">Basic information</string>
     <string name="billboard_detail_basics_descriptions">In this first section find basic information, such as title, gender, etc.</string>
     <string name="billboard_detail_synopsis_tour">Detailed information</string>

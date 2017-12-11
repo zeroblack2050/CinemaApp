@@ -132,7 +132,7 @@ public class BillboardDetail extends BaseViews<BillboardDetailPresenter> impleme
                         })
                         .setTitle(getString(R.string.billboard_detail_synopsis_tour))
                         .setDescription(getString(R.string.billboard_detail_synopsis_description))
-                        .setGravity(Gravity.BOTTOM)
+                        .setGravity(Gravity.TOP)
 
                 )
                 .playLater(linearSynopsis);

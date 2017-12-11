@@ -11,7 +11,7 @@
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
     <string name="billboard_detail_detail">Detalle</string>
     <string name="billboard_detail_title">Título</string>
-    <string name="billboard_detail_genre">Género</string>
+    <string name="billboard_detail_gender">Género</string>
     <string name="billboard_detail_rating">Clasificación</string>
     <string name="billboard_detail_director">Director</string>
     <string name="billboard_detail_cast">Reparto</string>
@@ -30,21 +30,18 @@
     <string name="menu_billboard_guide">Conocer la aplicación</string>
     <string name="session_with_twitter_close_session">Cerrar sessión</string>
     <string name="billboard_listview_tour_description_list">En esta lista encontrará las últimas películas</string>
-
-
     <string name="twitter">Twitter</string>
     <string name="twitter_descriptions">El menú desplegable te permite iniciar sesión con twitter</string>
     <string name="session_with_twitter_photo">Foto de perfil</string>
     <string name="session_with_twitter_photo_description">Aquí puede ver su foto de perfil de twitter, también puede utilizar una imagen local</string>
     <string name="session_with_twitter_button">Inicio de sesión</string>
     <string name="session_with_twitter_button_description">Este boton te permite iniciar o cerrar sesión</string>
-
     <string name="billboard_detail_basics">Información básica</string>
-    <string name="billboard_detail_basics_descriptions">En esta primera sección encontrar información basica, como titulo, genero, etc.</string>
+    <string name="billboard_detail_basics_descriptions">En esta primera sección encontrar información básica, como título, género, etc.</string>
     <string name="billboard_detail_synopsis_tour">Información detallada</string>
     <string name="billboard_detail_synopsis_description">En esta sección encontrara una breve sinopsis o resumen escrito de la película</string>
     <string name="billboard_detail_maps">Salas de cine</string>
-    <string name="billboard_detail_maps_description">Esta acción le permitira ver las salas de cine donde puede ver esta pelicula</string>
+    <string name="billboard_detail_maps_description">Esta acción te permitira ver las salas de cine donde puede ver esta película</string>
 
 
 </resources>

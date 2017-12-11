@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/billboard_listview_billboard"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textSize="50dp"
+                    android:textSize="45dp"
                     android:gravity="left"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-condensed"

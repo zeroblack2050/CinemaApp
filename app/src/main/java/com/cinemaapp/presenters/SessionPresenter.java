@@ -13,9 +13,5 @@ public class SessionPresenter extends BasePresenter<ISessionWithTwitter> {
 
     }
 
-    private void initSessionTwitter(){
-
-
-    }
 
 }
